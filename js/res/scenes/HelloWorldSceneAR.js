@@ -42,10 +42,10 @@ export default class HelloWorldSceneAR extends Component {
         <ViroAmbientLight color={"#aaaaaa"} />
           <ViroNode position={[0.5,-0.2,-1]} dragType="FixedToWorld" onDrag={()=>{}} >
             <Viro3DObject 
-            source={require('./res/archive/Skateboard.gltf')}
+            source={require('../archive/Skateboard.gltf')}
             resources={[
-              require('./res/archive/Skateboard_BaseColor.png'),
-              require('./res/archive/Skateboard.bin')
+              require('../archive/Skateboard_BaseColor.png'),
+              require('../archive/Skateboard.bin')
             ]}
             onClick={() => this.trickStarter() }
             position={[0.5, -0.2, -1.0]}

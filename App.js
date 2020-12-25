@@ -40,7 +40,7 @@ import {
 
 
 // Sets the default scene you want for AR and VR
-const InitialARScene = require('./js/HelloWorldSceneAR');
+const InitialARScene = require('./js/res/scenes/HelloWorldSceneAR');
 
 const UNSET = "UNSET";
 const AR_NAVIGATOR_TYPE = "AR";
