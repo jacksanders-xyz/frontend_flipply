@@ -19,7 +19,7 @@ import {
 } from 'react-viro';
 
 
-export default class HelloWorldSceneAR extends Component {
+export default class ollieSceneAR extends Component {
   
   constructor() {
     super();
@@ -181,7 +181,7 @@ ViroAnimations.registerAnimations({
 });
 
 // then we export the module
-module.exports = HelloWorldSceneAR;
+module.exports = ollieSceneAR;
 
 
 // rotateY: "+=180" //how many degrees the board turns 

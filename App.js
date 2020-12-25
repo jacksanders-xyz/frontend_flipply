@@ -40,7 +40,7 @@ import {
 
 
 // Sets the default scene you want for AR and VR
-const InitialARScene = require('./js/res/scenes/HelloWorldSceneAR');
+const ARTrickScene = require('./js/res/scenes/ollieSceneAR');
 
 const UNSET = "UNSET";
 const AR_NAVIGATOR_TYPE = "AR";
@@ -209,7 +209,7 @@ export default class ViroSample extends Component {
   _getARNavigator() {
     return (
       <ViroARSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialARScene}} />
+        initialScene={{scene: ARTrickScene}} />
     );
   }
   
