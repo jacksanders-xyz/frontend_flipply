@@ -40,7 +40,7 @@ export default class HelloWorldSceneAR extends Component {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#aaaaaa"} />
-          <ViroNode position={[0.5,0,-1]} dragType="FixedToWorld" onDrag={()=>{}} >
+          <ViroNode position={[0.5,-0.2,-1]} dragType="FixedToWorld" onDrag={()=>{}} >
             <Viro3DObject 
             source={require('./res/archive/Skateboard.gltf')}
             resources={[
@@ -48,7 +48,7 @@ export default class HelloWorldSceneAR extends Component {
               require('./res/archive/Skateboard.bin')
             ]}
             onClick={() => this.trickStarter() }
-            position={[0.5, 0.0, -1.0]}
+            position={[0.5, -0.2, -1.0]}
             scale={[0.1, 0.1, 0.1]}
             animation={{name: this.state.flipMoment,
                 run: this.state.flipping,
@@ -131,7 +131,7 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   prePop: {
     properties: {
@@ -139,44 +139,44 @@ ViroAnimations.registerAnimations({
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   pop: {
     properties: {
       rotateZ: "-=5",
-      positionY: "+=0.35",
+      positionY: "+=0.3",
       positionX: "-=0.1",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   postPop: {
     properties: {
       rotateZ: "+=35", 
       positionX: "-=0.3",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   levelOut: {
     properties: {
       rotateZ: "+=15", 
       positionX: "-=0.3",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   land: {
     properties: {
       rotateZ: "-=5", 
-      positionY: "-=0.5",
+      positionY: "-=0.48",
       positionX: "-=0.4",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
   rollAway: {
     properties: {
       rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 500, //.5 seconds
+    duration: 200, //.5 seconds
   },
 });
 

@@ -31,6 +31,7 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
+  ScrollView,
 } from 'react-native';
 
 import {
@@ -39,14 +40,14 @@ import {
 
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('./js/HelloWorldSceneAR');
+const InitialARScene = require('./js/HelloWorldSceneAR');
 
-var UNSET = "UNSET";
-var AR_NAVIGATOR_TYPE = "AR";
+const UNSET = "UNSET";
+const AR_NAVIGATOR_TYPE = "AR";
 
 // This determines which type of experience to launch in, or UNSET, if the user should
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
-var defaultNavigatorType = UNSET;
+const defaultNavigatorType = UNSET;
 
 export default class ViroSample extends Component {
   constructor() {
@@ -76,18 +77,129 @@ export default class ViroSample extends Component {
     return (
       <View style={localStyles.outer} >
         <View style={localStyles.inner} >
+        <ScrollView>
+       
+         <Text style={localStyles.titleText}>
+          Welcome to FLIPPLY, 
+          </Text>
+
+         <Text style={localStyles.titleText}>
+           Pick a trick
+          </Text>
 
           <Text style={localStyles.titleText}>
-            Welcome to FLIPPLY, pick a trick:
+          Beginner
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'} >
-
-            <Text style={localStyles.buttonText}>AR</Text>
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Ollie 
+          </Text>
           </TouchableHighlight>
 
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          backside pop shuv-it
+          </Text>
+          </TouchableHighlight>
+
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          frontside pop shuv-it
+          </Text>
+          </TouchableHighlight>
+
+
+          <Text style={localStyles.titleText}>
+          Intermediate
+          </Text>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Kickflip
+          </Text>
+          </TouchableHighlight>
+
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Heelflip 
+          </Text>
+          </TouchableHighlight>
+
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Varial flip
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Varial Heel-flip
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Hard flip
+          </Text>
+          </TouchableHighlight>
+
+          <Text style={localStyles.titleText}>
+          Advanced
+          </Text>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Backside 360 Shuv-it
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          360 flip
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Frontside 360 shuv-it
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Laser flip
+          </Text>
+          </TouchableHighlight>
+
+      </ScrollView>
         </View>
       </View>
     );
@@ -121,7 +233,7 @@ export default class ViroSample extends Component {
   }
 }
 
-var localStyles = StyleSheet.create({
+const localStyles = StyleSheet.create({
   viroContainer :{
     flex : 1,
     backgroundColor: "black",
@@ -156,6 +268,7 @@ var localStyles = StyleSheet.create({
     paddingTop:20,
     paddingBottom:20,
     marginTop: 10,
+    alignSelf: 'center',
     marginBottom: 10,
     backgroundColor:'#68a0cf',
     borderRadius: 10,
