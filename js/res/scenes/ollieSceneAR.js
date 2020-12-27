@@ -180,10 +180,6 @@ ViroAnimations.registerAnimations({
   },
 });
 
-// then we export the module
+
+
 module.exports = ollieSceneAR;
-
-
-// rotateY: "+=180" //how many degrees the board turns 
-
-

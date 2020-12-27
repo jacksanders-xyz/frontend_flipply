@@ -1,20 +1,4 @@
 /**
-// <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
-// <ViroBox position={[0, -.5, -1]} scale={[.3, .3, .1]} materials={["grid"]} />
-// <ViroAmbientLight color={"#aaaaaa"} />
-// <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0,-1,-.2]}
-// position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
-// <ViroARPlaneSelector>
-// <Viro3DObject
-// source={require('./res/emoji_smile/emoji_smile.vrx')}
-// resources={[require('./res/emoji_smile/emoji_smile_diffuse.png'),
-// require('./res/emoji_smile/emoji_smile_normal.png'),
-// require('./res/emoji_smile/emoji_smile_specular.png')]}
-// position={[0, .5, 0]}
-// scale={[.2, .2, .2]}
-// type="VRX" />
-// </ViroARPlaneSelector>
-//
  * Copyright (c) 2017-present, Viro, Inc.
  * All rights reserved.
  *
@@ -24,8 +8,8 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
+import OllieMenu from './js/res/menus/OllieMenu';
+import { AppRegistry,
   Text,
   View,
   StyleSheet,
@@ -41,13 +25,14 @@ import {
 
 // Sets the default scene you want for AR and VR
 const ARTrickScene = require('./js/res/scenes/ollieSceneAR');
-
-const UNSET = "UNSET";
+//
+const signInMenu = "signInMenu";
 const AR_NAVIGATOR_TYPE = "AR";
+const trickMenu = "trickMenu";
+const OLLIE_MENU = "OLLIE_MENU";
 
-// This determines which type of experience to launch in, or UNSET, if the user should
-// be presented with a choice of AR or VR. By default, we offer the user a choice.
-const defaultNavigatorType = UNSET;
+
+const defaultNavigatorType = signInMenu
 
 export default class ViroSample extends Component {
   constructor() {
@@ -56,24 +41,31 @@ export default class ViroSample extends Component {
     this.state = {
       navigatorType : defaultNavigatorType,
     }
-    this._getExperienceSelector = this._getExperienceSelector.bind(this);
-    this._getARNavigator = this._getARNavigator.bind(this);
+    this._userSignInMenu = this._userSignInMenu.bind(this);
+    this._userSignedIn= this._userSignedIn.bind(this);
+    this._trickMenuSelector = this._trickMenuSelector.bind(this);
+//
+    this._init_OllieMenu = this._init_OllieMenu.bind(this);
+    this._init_TrickScene = this._init_TrickScene.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
-
   // The top level switch, that says "has a button been pressed? which one?" based on the
   // state of navigatorType
   render() {
-    if (this.state.navigatorType == UNSET) {
-      return this._getExperienceSelector();
+    if (this.state.navigatorType == signInMenu) {
+      return this._userSignInMenu();
+    } else if (this.state.navigatorType == trickMenu) {
+      return this._trickMenuSelector();
+    } else if (this.state.navigatorType == OLLIE_MENU) {
+      return this._init_OllieMenu();
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
-      return this._getARNavigator();
+      return this._init_TrickScene();
     }
-  }
+}
 
   // THE MAIN MENU, (returns js for the main menu) 
-  _getExperienceSelector() {
+  _trickMenuSelector() {
     return (
       <View style={localStyles.outer} >
         <View style={localStyles.inner} >
@@ -92,7 +84,7 @@ export default class ViroSample extends Component {
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          onPress={this._begin_TrickMenu(OLLIE_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Ollie 
@@ -137,7 +129,6 @@ export default class ViroSample extends Component {
           Heelflip 
           </Text>
           </TouchableHighlight>
-
 
           <TouchableHighlight style={localStyles.buttons}
           onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
@@ -199,17 +190,65 @@ export default class ViroSample extends Component {
           </Text>
           </TouchableHighlight>
 
-      </ScrollView>
+        </ScrollView>
         </View>
       </View>
     );
   }
 
-  // Returns the ViroARSceneNavigator which will start the AR experience
-  _getARNavigator() {
+
+  _userSignInMenu() {
     return (
-      <ViroARSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: ARTrickScene}} />
+      <View style={localStyles.outer}>
+        <View style={localStyles.inner}>
+          <Text style={localStyles.titleText}>
+          Welcome to flipply, please Sign in: 
+          </Text>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._userSignedIn()}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Sign in 
+          </Text>
+          </TouchableHighlight>
+
+        </View>
+      </View>
+
+    );
+  }
+  _userSignedIn() {
+    return () => {
+      this.setState({ navigatorType: trickMenu  })
+    }
+  }
+
+  _begin_TrickMenu(A_TRICKS_MENU) {
+    return () => {
+      this.setState({ navigatorType: A_TRICKS_MENU })
+    } 
+  }
+
+// MENUS
+  _init_OllieMenu() {
+    return (
+      <View style={localStyles.outer}>
+      <OllieMenu _begin_TrickScene={this._begin_TrickScene()} />
+      </View>
+    );
+  }
+// Returns the ViroARSceneNavigator which will start the AR experience
+
+_begin_TrickScene() {
+    return () => {
+      this.setState({ navigatorType: AR_NAVIGATOR_TYPE  })
+    } 
+  }
+
+_init_TrickScene() {
+    return (
+      <ViroARSceneNavigator initialScene={{scene: ARTrickScene}} />
     );
   }
   
@@ -225,10 +264,10 @@ export default class ViroSample extends Component {
     }
   }
 
-  // This function "exits" Viro by setting the navigatorType to UNSET.
+  // This function "exits" Viro by setting the navigatorType to signInMenu.
   _exitViro() {
     this.setState({
-      navigatorType : UNSET
+      navigatorType : signInMenu
     })
   }
 }
