@@ -23,16 +23,27 @@ import {
 } from 'react-viro';
 
 
-// Sets the default scene you want for AR and VR
+// Scenes
 const ARTrickScene = require('./js/res/scenes/ollieSceneAR');
-//
-const signInMenu = "signInMenu";
-const AR_NAVIGATOR_TYPE = "AR";
+
+
+
+// Menu/navigator state
+const mainUserHomepage = "mainUserHomepage";
+const signOnMenu = "signOnMenu";
 const trickMenu = "trickMenu";
+const defaultNavigatorType = mainUserHomepage
+
+
+
+// Trick menu Navigators
 const OLLIE_MENU = "OLLIE_MENU";
 
 
-const defaultNavigatorType = signInMenu
+//Trick Scene state
+const OLLIE_SCENE = "OLLIE_SCENE"
+const AR_NAVIGATOR_TYPE = "AR";
+
 
 export default class ViroSample extends Component {
   constructor() {
@@ -50,10 +61,9 @@ export default class ViroSample extends Component {
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
-  // The top level switch, that says "has a button been pressed? which one?" based on the
-  // state of navigatorType
+  
   render() {
-    if (this.state.navigatorType == signInMenu) {
+    if (this.state.navigatorType == mainUserHomepage) {
       return this._userSignInMenu();
     } else if (this.state.navigatorType == trickMenu) {
       return this._trickMenuSelector();
@@ -64,7 +74,40 @@ export default class ViroSample extends Component {
     }
 }
 
-  // THE MAIN MENU, (returns js for the main menu) 
+  _userSignInMenu() {
+    return (
+      <View style={localStyles.outer}>
+        <View style={localStyles.inner}>
+          <Text style={localStyles.titleText}>
+          Welcome to flipply, please Sign in: 
+          </Text>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._userSignedIn()}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Sign in 
+          </Text>
+          </TouchableHighlight>
+
+        </View>
+      </View>
+
+    );
+  }
+  
+  _userSignedIn() {
+    return () => {
+      this.setState({ navigatorType: trickMenu  })
+    }
+  }
+
+  _begin_TrickMenu(A_TRICKS_MENU) {
+    return () => {
+      this.setState({ navigatorType: A_TRICKS_MENU })
+    } 
+  }
+// THE MAIN MENU, (returns js for the main menu) 
   _trickMenuSelector() {
     return (
       <View style={localStyles.outer} >
@@ -197,38 +240,6 @@ export default class ViroSample extends Component {
   }
 
 
-  _userSignInMenu() {
-    return (
-      <View style={localStyles.outer}>
-        <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>
-          Welcome to flipply, please Sign in: 
-          </Text>
-
-          <TouchableHighlight style={localStyles.buttons}
-          onPress={this._userSignedIn()}
-          underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Sign in 
-          </Text>
-          </TouchableHighlight>
-
-        </View>
-      </View>
-
-    );
-  }
-  _userSignedIn() {
-    return () => {
-      this.setState({ navigatorType: trickMenu  })
-    }
-  }
-
-  _begin_TrickMenu(A_TRICKS_MENU) {
-    return () => {
-      this.setState({ navigatorType: A_TRICKS_MENU })
-    } 
-  }
 
 // MENUS
   _init_OllieMenu() {
@@ -264,10 +275,10 @@ _init_TrickScene() {
     }
   }
 
-  // This function "exits" Viro by setting the navigatorType to signInMenu.
+  // This function "exits" Viro by setting the navigatorType to mainUserHomepage.
   _exitViro() {
     this.setState({
-      navigatorType : signInMenu
+      navigatorType : mainUserHomepage
     })
   }
 }
