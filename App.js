@@ -18,6 +18,7 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
 } from 'react-native';
 
@@ -287,12 +288,7 @@ _init_TrickScene(TrickScene) {
           <View style={localStyles.flex}>
           <StatusBar hidden={false}/>
           <ViroARSceneNavigator initialScene={{scene: OLLIE_trick_SCENE}} />
-            <View style={localStyles.topMenu}>
-          <Image 
-            style={localStyles.topMenu}
-            source={require('./js/res/archive/icon_left_w.png')}        
-          />
-            </View>
+          {this._backARROW_scene()}
           </View>
       );
     }
@@ -310,6 +306,40 @@ _init_TrickScene(TrickScene) {
     }
   }
 
+//out of scene into trick menu
+_back_toTricksMenu() {
+    return () => {
+      this.setState({
+        topNavigatorType : trick_menu_nav,
+        lastClickedTrickScene : defaultTrickScene 
+      })
+    }
+} 
+
+_backARROW_scene() {
+return (
+    <View style={localStyles.topMenu}>
+      <TouchableOpacity style={localStyles.flex}activeOpacity={.5} onPress={this._back_toTricksMenu()}>
+      <Image 
+      style={localStyles.topMenu}
+      source={require('./js/res/archive/icon_left_w.png')}        
+      />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+
+
+//out of trick menu to main trick menu
+_back_toMainTrickMenu() {
+    return () => {
+      this.setState({
+        topNavigatorType : trickMenu,
+        lastClickedTrickMenu : defaultTrickMenu 
+      })
+    }
+} 
   // This function "exits" Viro by setting the topNavigatorType to mainUserHomepage.
   _exitViro() {
       this.setState({
