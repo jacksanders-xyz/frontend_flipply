@@ -12,6 +12,7 @@ import OllieMenu from './js/res/menus/OllieMenu';
 import { 
   AppRegistry,
   Text,
+  Image,
   View,
   StatusBar,
   StyleSheet,
@@ -23,7 +24,8 @@ import {
 import {
   ViroARSceneNavigator,
 } from 'react-viro';
-
+//
+// const backArrow = require('./js/res/archive/icon_left_w.png');
 
 // Scenes
 const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
@@ -33,10 +35,11 @@ const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
 // Menu/navigator state
 const mainUserHomepage = "mainUserHomepage";
 const signInMenu = "signInMenu";
+const signUpMenu = "signUpMenu";
 const trickMenu = "trickMenu";
-const defaultNavigatorType = mainUserHomepage
 const trick_menu_nav = "A Tricks Menu Is on"  
 const trick_scene_nav = "A Trick Scene Is happening"  
+const defaultNavigatorType = mainUserHomepage
 
 // Trick menu Navigators
 const OLLIE_MENU = "OLLIE_MENU";
@@ -73,11 +76,13 @@ export default class ViroSample extends Component {
       return this._trickMenuSelector();
     } else if (this.state.topNavigatorType == trick_menu_nav) {
       return this._init_TrickMenu(this.state.lastClickedTrickMenu);
-    } else if (this.state.topNavigatorType == AR_NAVIGATOR_TYPE || this.state.topNavigatorType == trick_scene_nav) {
+    } else if ( this.state.topNavigatorType == trick_scene_nav) {
       return this._init_TrickScene(this.state.lastClickedTrickScene);
     }
 }
 
+// To make the other buttons just fire ollie, pop next to trick scene nav switch
+// this.state.topNavigatorType == AR_NAVIGATOR_TYPE ||
   _userSignInMenu() {
     return (
       <View style={localStyles.outer}>
@@ -91,6 +96,14 @@ export default class ViroSample extends Component {
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Sign in 
+          </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={localStyles.buttons}
+          onPress={this._userSignedIn()}
+          underlayColor={'#68a0ff'} >
+          <Text style={localStyles.buttonText}>
+          Sign up 
           </Text>
           </TouchableHighlight>
 
@@ -271,7 +284,16 @@ _begin_TrickScene(TrickScene) {
 _init_TrickScene(TrickScene) {
       if (TrickScene = OLLIE_SCENE) {
         return (
-        <ViroARSceneNavigator initialScene={{scene: OLLIE_trick_SCENE}} />
+          <View style={localStyles.flex}>
+          <StatusBar hidden={false}/>
+          <ViroARSceneNavigator initialScene={{scene: OLLIE_trick_SCENE}} />
+            <View style={localStyles.topMenu}>
+          <Image 
+            style={localStyles.topMenu}
+            source={require('./js/res/archive/icon_left_w.png')}        
+          />
+            </View>
+          </View>
       );
     }
   }
@@ -297,6 +319,9 @@ _init_TrickScene(TrickScene) {
   }
 
 const localStyles = StyleSheet.create({
+  flex :{
+    flex : 1,
+  },
   viroContainer :{
     flex : 1,
     backgroundColor: "black",
@@ -349,7 +374,14 @@ const localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
+    topMenu: {
+      position : 'absolute',
+      top : 0,
+      marginTop: 10,
+      height : '30%',
+      width : '40%',
+  },
 });
 
 module.exports = ViroSample
