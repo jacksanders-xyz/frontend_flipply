@@ -9,9 +9,11 @@
 
 import React, { Component } from 'react';
 import OllieMenu from './js/res/menus/OllieMenu';
-import { AppRegistry,
+import { 
+  AppRegistry,
   Text,
   View,
+  StatusBar,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
@@ -24,25 +26,26 @@ import {
 
 
 // Scenes
-const ARTrickScene = require('./js/res/scenes/ollieSceneAR');
+const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
 
 
 
 // Menu/navigator state
 const mainUserHomepage = "mainUserHomepage";
-const signOnMenu = "signOnMenu";
+const signInMenu = "signInMenu";
 const trickMenu = "trickMenu";
 const defaultNavigatorType = mainUserHomepage
-
-
+const trick_menu_nav = "A Tricks Menu Is on"  
+const trick_scene_nav = "A Trick Scene Is happening"  
 
 // Trick menu Navigators
 const OLLIE_MENU = "OLLIE_MENU";
-
+const defaultTrickMenu = ''
 
 //Trick Scene state
 const OLLIE_SCENE = "OLLIE_SCENE"
 const AR_NAVIGATOR_TYPE = "AR";
+const defaultTrickScene = ''
 
 
 export default class ViroSample extends Component {
@@ -50,27 +53,28 @@ export default class ViroSample extends Component {
     super();
 
     this.state = {
-      navigatorType : defaultNavigatorType,
+      topNavigatorType : defaultNavigatorType,
+      lastClickedTrickMenu : defaultTrickMenu,
+      lastClickedTrickScene : defaultTrickScene
     }
     this._userSignInMenu = this._userSignInMenu.bind(this);
     this._userSignedIn= this._userSignedIn.bind(this);
     this._trickMenuSelector = this._trickMenuSelector.bind(this);
 //
-    this._init_OllieMenu = this._init_OllieMenu.bind(this);
     this._init_TrickScene = this._init_TrickScene.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
   
   render() {
-    if (this.state.navigatorType == mainUserHomepage) {
+    if (this.state.topNavigatorType == mainUserHomepage) {
       return this._userSignInMenu();
-    } else if (this.state.navigatorType == trickMenu) {
+    } else if (this.state.topNavigatorType == trickMenu) {
       return this._trickMenuSelector();
-    } else if (this.state.navigatorType == OLLIE_MENU) {
-      return this._init_OllieMenu();
-    } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
-      return this._init_TrickScene();
+    } else if (this.state.topNavigatorType == trick_menu_nav) {
+      return this._init_TrickMenu(this.state.lastClickedTrickMenu);
+    } else if (this.state.topNavigatorType == AR_NAVIGATOR_TYPE || this.state.topNavigatorType == trick_scene_nav) {
+      return this._init_TrickScene(this.state.lastClickedTrickScene);
     }
 }
 
@@ -98,15 +102,10 @@ export default class ViroSample extends Component {
   
   _userSignedIn() {
     return () => {
-      this.setState({ navigatorType: trickMenu  })
+      this.setState({ topNavigatorType: trickMenu  })
     }
   }
 
-  _begin_TrickMenu(A_TRICKS_MENU) {
-    return () => {
-      this.setState({ navigatorType: A_TRICKS_MENU })
-    } 
-  }
 // THE MAIN MENU, (returns js for the main menu) 
   _trickMenuSelector() {
     return (
@@ -242,46 +241,60 @@ export default class ViroSample extends Component {
 
 
 // MENUS
-  _init_OllieMenu() {
-    return (
+
+_begin_TrickMenu(TrickMenu) {
+    return () => {
+      this.setState({ 
+        topNavigatorType: trick_menu_nav,
+        lastClickedTrickMenu : TrickMenu
+      })
+    } 
+  }
+_init_TrickMenu(TrickMenu) { 
+    if (TrickMenu = OLLIE_MENU) { 
+      return (
       <View style={localStyles.outer}>
       <OllieMenu _begin_TrickScene={this._begin_TrickScene()} />
       </View>
-    );
+      );
+    }
   }
-// Returns the ViroARSceneNavigator which will start the AR experience
-
-_begin_TrickScene() {
+_begin_TrickScene(TrickScene) {
     return () => {
-      this.setState({ navigatorType: AR_NAVIGATOR_TYPE  })
+      this.setState({ 
+        topNavigatorType : trick_scene_nav,
+        lastClickedTrickScene : TrickScene
+      })
     } 
   }
 
-_init_TrickScene() {
-    return (
-      <ViroARSceneNavigator initialScene={{scene: ARTrickScene}} />
-    );
+_init_TrickScene(TrickScene) {
+      if (TrickScene = OLLIE_SCENE) {
+        return (
+        <ViroARSceneNavigator initialScene={{scene: OLLIE_trick_SCENE}} />
+      );
+    }
   }
   
 
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
 
-  _getExperienceButtonOnPress(navigatorType) {
+  _getExperienceButtonOnPress(topNavigatorType) {
     return () => {
       this.setState({
-        navigatorType : navigatorType
+        topNavigatorType : navigatorType
       })
     }
   }
 
-  // This function "exits" Viro by setting the navigatorType to mainUserHomepage.
+  // This function "exits" Viro by setting the topNavigatorType to mainUserHomepage.
   _exitViro() {
-    this.setState({
-      navigatorType : mainUserHomepage
-    })
+      this.setState({
+        topNavigatorType : mainUserHomepage
+      })
+    }
   }
-}
 
 const localStyles = StyleSheet.create({
   viroContainer :{

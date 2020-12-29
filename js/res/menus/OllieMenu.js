@@ -51,7 +51,7 @@ export default class OllieMenu extends Component {
           </Text>
           
           <TouchableHighlight style={localStyles.buttons}
-          onPress={() => this.props._begin_TrickScene()}
+          onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           AR Ollie

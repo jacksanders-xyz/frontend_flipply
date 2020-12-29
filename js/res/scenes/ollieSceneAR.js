@@ -2,13 +2,15 @@
 
 import React, { Component } from 'react';
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
 
 import {
   ViroARScene,
   ViroText,
   ViroMaterials,
   ViroBox,
+  ViroButton,
   Viro3DObject,
   ViroAmbientLight,
   ViroSpotLight,
@@ -30,33 +32,31 @@ export default class ollieSceneAR extends Component {
       flipMoment: "roll",
       flipping: false, 
     };
-
-    // bind 'this' to functions, you've bound everything in here to the context of _onInitialized 
-    // so _onInitialized now has access to everything.. state and reason don't need a "this"  
-    // on_initialized always looks back to the context of this initial class
     this._onInitialized = this._onInitialized.bind(this);
   }
+  
+
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
-        <ViroAmbientLight color={"#aaaaaa"} />
-          <ViroNode position={[0.5,-0.2,-1]} dragType="FixedToWorld" onDrag={()=>{}} >
-            <Viro3DObject 
-            source={require('../archive/Skateboard.gltf')}
-            resources={[
-              require('../archive/Skateboard_BaseColor.png'),
-              require('../archive/Skateboard.bin')
-            ]}
-            onClick={() => this.trickStarter() }
-            position={[0.5, -0.2, -1.0]}
-            scale={[0.1, 0.1, 0.1]}
-            animation={{name: this.state.flipMoment,
-                run: this.state.flipping,
-                onFinish: () => this.trickStateManager()
-            }}           
-            type="GLTF"
-            />
-          </ViroNode>
+      <ViroAmbientLight color={"#aaaaaa"} />
+      <ViroNode position={[0.5,-0.2,-1]} dragType="FixedToWorld" onDrag={()=>{}} >
+      <Viro3DObject 
+      source={require('../archive/Skateboard.gltf')}
+      resources={[
+        require('../archive/Skateboard_BaseColor.png'),
+        require('../archive/Skateboard.bin')
+      ]}
+      onClick={() => this.trickStarter() }
+      position={[0.5, -0.2, -1.0]}
+      scale={[0.1, 0.1, 0.1]}
+      animation={{name: this.state.flipMoment,
+          run: this.state.flipping,
+          onFinish: () => this.trickStateManager()
+      }}           
+      type="GLTF"
+      />
+      </ViroNode>
       </ViroARScene>
     );
   }
@@ -104,7 +104,7 @@ trickStateManager = () => {
 _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
-        text : "jack"
+        text : "getting ready to shred..."
       });
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
