@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry,
   Text,
+  TouchableOpacity,
+  Image,
   View,
   StyleSheet,
   PixelRatio,
@@ -44,20 +46,31 @@ export default class OllieMenu extends Component {
 
   _displayOLLIE_MENU() {
     return (
-      <View style={localStyles.outer}>
-        <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>
-          Hey you're at the OllieMenu
-          </Text>
-          
-          <TouchableHighlight style={localStyles.buttons}
-          onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
-          underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          AR Ollie
-          </Text>
-          </TouchableHighlight>
+      <View style={localStyles.flex}>
+        <View style={localStyles.topMenu}>
+        <TouchableOpacity style={localStyles.flex} activeOpacity={.5} >
+        <Image 
+        style={localStyles.topMenu}
+        source={require('../archive/icon_left_w.png')}        
+        />
+        </TouchableOpacity>
         </View>
+      <View style={localStyles.outer}>
+      <View style={localStyles.inner}>
+      <Text style={localStyles.titleText}>
+      Hey you're at the OllieMenu
+      </Text>
+
+      <TouchableHighlight style={localStyles.buttons}
+      onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
+      underlayColor={'#68a0ff'} >
+      <Text style={localStyles.buttonText}>
+      AR Ollie
+      </Text>
+      </TouchableHighlight>
+
+      </View>
+      </View>
       </View>
 
     )
@@ -72,7 +85,11 @@ export default class OllieMenu extends Component {
   }
   
   const localStyles = StyleSheet.create({
-    viroContainer :{
+    flex : {
+      flex : 1,
+      backgroundColor: "black",
+    },
+    viroContainer : {
       flex : 1,
       backgroundColor: "black",
     },
@@ -80,7 +97,6 @@ export default class OllieMenu extends Component {
       flex : 1,
       flexDirection: 'row',
       alignItems:'center',
-      backgroundColor: "black",
     },
     inner: {
       flex : 1,
@@ -124,6 +140,13 @@ export default class OllieMenu extends Component {
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#fff',
-    }
+    },
+    topMenu: {
+      height : '30%',
+      width : '40%',
+      marginTop: 10,
+      top : 0,
+      position : 'absolute'
+    },
   });
 module.exports = OllieMenu;
