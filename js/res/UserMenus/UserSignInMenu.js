@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   View,
+  TextInput,
   StatusBar,
   StyleSheet,
   PixelRatio,
@@ -31,17 +32,21 @@ const UserSignInMenu = (props) => {
           />
           </TouchableOpacity>
       </View>
-    <View style={localStyles.outer}>
     <View style={localStyles.inner}>
-    <Text style={localStyles.titleText}>SIGN IN MENU</Text>
-          <TouchableHighlight style={localStyles.buttons}
-          onPress={() => props._userSignedIn()}
-          underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Sign in 
-          </Text>
-          </TouchableHighlight>
-    </View>
+      <View style={localStyles.formBox}>
+        <TextInput style={localStyles.textInput} placeholder="Username" />
+      </View>
+      <View style={localStyles.formBox}>
+        <TextInput style={localStyles.textInput} placeholder="Password" />
+      </View>
+        <Text style={localStyles.titleText}>SIGN IN MENU</Text>
+        <TouchableHighlight style={localStyles.buttons}
+        onPress={() => props._userSignedIn()}
+        underlayColor={'#68a0ff'} >
+        <Text style={localStyles.buttonText}>
+        Sign in 
+        </Text>
+      </TouchableHighlight>
     </View>
     </View>
   );
@@ -66,6 +71,10 @@ const UserSignInMenu = (props) => {
       flexDirection: 'column',
       alignItems:'center',
       backgroundColor: "black",
+    },
+    formBox: {
+      flexDirection: 'row',
+      alignItems:'center',
     },
     titleText: {
       paddingTop: 30,
@@ -109,6 +118,15 @@ const UserSignInMenu = (props) => {
       width : '40%',
       marginTop: 10,
       top : 0,
+    },
+    textInput: {
+      flex: 1,
+      borderColor: 'gray',
+      borderWidth: 1,
+      padding: 10,
+      marginBottom: 10,
+      marginLeft: 10,
+      marginRight: 10,
     },
   });
 export default UserSignInMenu;
