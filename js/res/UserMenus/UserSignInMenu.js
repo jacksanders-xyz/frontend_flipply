@@ -123,7 +123,7 @@ const UserSignInMenu = (props) => {
       flex: 1,
       borderColor: 'gray',
       borderWidth: 1,
-      padding: 10,
+      padding: 15,
       marginBottom: 10,
       marginLeft: 10,
       marginRight: 10,
