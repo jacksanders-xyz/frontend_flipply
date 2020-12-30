@@ -8,7 +8,6 @@
  */
 
 import React, { Component } from 'react';
-import OllieMenu from './js/res/menus/OllieMenu';
 import { 
   AppRegistry,
   Text,
@@ -25,10 +24,17 @@ import {
 import {
   ViroARSceneNavigator,
 } from 'react-viro';
-//
-// const backArrow = require('./js/res/archive/icon_left_w.png');
 
-// Scenes
+// Components: 
+import UserSignInMenu from './js/res/UserMenus/UserSignInMenu';
+import UserSignUpMenu from './js/res/UserMenus/UserSignUpMenu';
+
+
+
+//Menus:
+import OllieMenu from './js/res/trickMenus/OllieMenu';
+
+// Scenes:
 const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
 
 
@@ -73,6 +79,10 @@ export default class ViroSample extends Component {
   render() {
     if (this.state.topNavigatorType == mainUserHomepage) {
       return this._userSignInMenu();
+    } else if ( this.state.topNavigatorType == signInMenu) {
+      return this._init_UserSignIn_MENU();
+    } else if ( this.state.topNavigatorType == signUpMenu) {
+      return this._init_UserSignUp_MENU();
     } else if (this.state.topNavigatorType == trickMenu) {
       return this._trickMenuSelector();
     } else if (this.state.topNavigatorType == trick_menu_nav) {
@@ -91,20 +101,21 @@ export default class ViroSample extends Component {
           <Text style={localStyles.titleText}>
           Welcome to flipply, please Sign in: 
           </Text>
+          
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._userSignedIn()}
+          onPress={this._begin_UserSignIn_MENU()}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
-          Sign in 
+          Sign in Menu
           </Text>
           </TouchableHighlight>
-
+          
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._userSignedIn()}
+          onPress={this._begin_UserSignUp_MENU()}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
-          Sign up 
+          Sign UP Menu
           </Text>
           </TouchableHighlight>
 
@@ -113,8 +124,34 @@ export default class ViroSample extends Component {
 
     );
   }
+
+  _begin_UserSignIn_MENU() {
+      return () => { this.setState({
+        topNavigatorType: signInMenu 
+      })
+    }
+  }
   
-  _userSignedIn() {
+  _init_UserSignIn_MENU() {
+    return (
+        <UserSignInMenu _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) } />
+    ) 
+  }
+
+  _begin_UserSignUp_MENU() {
+      return () => { this.setState({
+        topNavigatorType: signUpMenu 
+      })
+    }
+  }
+
+  _init_UserSignUp_MENU() {
+    return (
+        <UserSignUpMenu _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) }/>
+    ) 
+  }
+
+_userSignedIn() {
     return () => {
       this.setState({ topNavigatorType: trickMenu  })
     }
@@ -268,7 +305,7 @@ _init_TrickMenu(TrickMenu) {
     if (TrickMenu = OLLIE_MENU) { 
       return (
       <View style={localStyles.outer}>
-      <OllieMenu _begin_TrickScene={this._begin_TrickScene()} />
+      <OllieMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
       </View>
       );
     }

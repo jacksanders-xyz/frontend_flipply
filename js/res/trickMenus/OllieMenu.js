@@ -46,32 +46,35 @@ export default class OllieMenu extends Component {
 
   _displayOLLIE_MENU() {
     return (
-      <View style={localStyles.flex}>
-        <View style={localStyles.topMenu}>
-        <TouchableOpacity style={localStyles.flex} activeOpacity={.5} >
-        <Image 
-        style={localStyles.topMenu}
-        source={require('../archive/icon_left_w.png')}        
-        />
-        </TouchableOpacity>
+        <View style={localStyles.flex}>
+          <View style={localStyles.topMenu}>
+          <TouchableOpacity 
+            style={localStyles.flex}
+            activeOpacity={.5} 
+            onPress={() => this.props._back_toMainTrickMenu()}
+         >
+          <Image 
+            style={localStyles.topMenu}
+            source={require('../archive/icon_left_w.png')}        
+          />
+          </TouchableOpacity>
+          </View>
+          <View style={localStyles.outer}>
+            <View style={localStyles.inner}>
+              <Text style={localStyles.titleText}>
+              Hey you're at the OllieMenu
+              </Text>
+
+              <TouchableHighlight style={localStyles.buttons}
+              onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
+              underlayColor={'#68a0ff'} >
+              <Text style={localStyles.buttonText}>
+              AR Ollie
+              </Text>
+              </TouchableHighlight>
+            </View>
+          </View>
         </View>
-      <View style={localStyles.outer}>
-      <View style={localStyles.inner}>
-      <Text style={localStyles.titleText}>
-      Hey you're at the OllieMenu
-      </Text>
-
-      <TouchableHighlight style={localStyles.buttons}
-      onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
-      underlayColor={'#68a0ff'} >
-      <Text style={localStyles.buttonText}>
-      AR Ollie
-      </Text>
-      </TouchableHighlight>
-
-      </View>
-      </View>
-      </View>
 
     )
 }
@@ -146,7 +149,7 @@ export default class OllieMenu extends Component {
       width : '40%',
       marginTop: 10,
       top : 0,
-      position : 'absolute'
     },
   });
 module.exports = OllieMenu;
+
