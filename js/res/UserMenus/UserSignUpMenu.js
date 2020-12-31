@@ -56,7 +56,7 @@ import {
     <View style={localStyles.pickerBox}>
     <Picker 
     selectedValue={stance}
-    style={{width: 200, height: 44}}
+    style={{ height: 44 }}
     itemStyle={{ height: 44}}
     onValueChange={(itemValue, itemIndex) => setStance(itemValue)}
     >
@@ -101,7 +101,7 @@ import {
       alignItems:'center',
       backgroundColor: "black",
     },
-    formBox: {
+   formBox: {
       flexDirection: 'row',
       alignItems:'center',
     },
