@@ -24,17 +24,24 @@ import {
 import {
   ViroARSceneNavigator,
 } from 'react-viro';
-
-// Components: 
+// MenuComponents: 
 import UserSignInMenu from './js/res/UserMenus/UserSignInMenu';
 import UserSignUpMenu from './js/res/UserMenus/UserSignUpMenu';
 
 
 
-//Menus:
+//TrickMenuComponents:
 import OllieMenu from './js/res/trickMenus/OllieMenu';
 
-// Scenes:
+// Urls
+const baseUrl = 'http://localhost:8000/'
+const usersUrl = `${baseUrl}users/` 
+const loginUrl = `${baseUrl}login/` 
+
+
+
+
+// TrickScenes:
 const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
 
 
@@ -48,7 +55,7 @@ const trick_menu_nav = "A Tricks Menu Is on"
 const trick_scene_nav = "A Trick Scene Is happening"  
 const defaultNavigatorType = mainUserHomepage
 
-// Trick menu Navigators
+// Trick menu Navigator State
 const OLLIE_MENU = "OLLIE_MENU";
 const defaultTrickMenu = ''
 
@@ -61,11 +68,12 @@ const defaultTrickScene = ''
 export default class ViroSample extends Component {
   constructor() {
     super();
-
     this.state = {
       topNavigatorType : defaultNavigatorType,
       lastClickedTrickMenu : defaultTrickMenu,
-      lastClickedTrickScene : defaultTrickScene
+      lastClickedTrickScene : defaultTrickScene,
+      user: {},
+      error: ''
     }
     this._userSignInMenu = this._userSignInMenu.bind(this);
     this._userSignedIn= this._userSignedIn.bind(this);
@@ -75,7 +83,6 @@ export default class ViroSample extends Component {
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
-  
   render() {
     if (this.state.topNavigatorType == mainUserHomepage) {
       return this._userSignInMenu();
@@ -91,7 +98,6 @@ export default class ViroSample extends Component {
       return this._init_TrickScene(this.state.lastClickedTrickScene);
     }
 }
-
 // To make the other buttons just fire ollie, pop next to trick scene nav switch
 // this.state.topNavigatorType == AR_NAVIGATOR_TYPE ||
   _userSignInMenu() {
@@ -101,7 +107,6 @@ export default class ViroSample extends Component {
           <Text style={localStyles.titleText}>
           Welcome to flipply, please Sign in: 
           </Text>
-          
 
           <TouchableHighlight style={localStyles.buttons}
           onPress={this._begin_UserSignIn_MENU()}
@@ -115,7 +120,7 @@ export default class ViroSample extends Component {
           onPress={this._begin_UserSignUp_MENU()}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
-          Sign UP Menu
+          Sign up Menu
           </Text>
           </TouchableHighlight>
 
@@ -131,13 +136,41 @@ export default class ViroSample extends Component {
       })
     }
   }
+ 
+  login_USER_ = (username, password) => {
+      fetch(loginUrl, {
+        method: 'POST',
+      headers: {
+        "Content-Type": "application/json"  
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            password
+          }
+        })
+      })
+      .then(response => response.json())
+      .then(result => {
+      if(result.token) {
+        localStorage.setItem('token', result.token)
+        this.setState({
+          user: result.user
+        })
+      } else {
+        this.setState({
+          error: result
+        })
+      }
+    })
+  }
   
   _init_UserSignIn_MENU() {
     return (
-        <UserSignInMenu _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) } />
+        <UserSignInMenu login_USER_={this._login_USER} error={this.state.error} _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) } />
     ) 
   }
-
+  
   _begin_UserSignUp_MENU() {
       return () => { this.setState({
         topNavigatorType: signUpMenu 
@@ -145,13 +178,35 @@ export default class ViroSample extends Component {
     }
   }
 
+  signUp_USER_ = user => {
+    fetch(usersUrl, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"  
+      },  
+      body: JSON.stringify({
+        user: {
+          username: user.username,
+          password: user.password,
+          stance: user.stance 
+        }
+      })
+      .then(response => response.json())
+      .then(user => this.setState({ user }))
+    })
+  }
+  
+
+
   _init_UserSignUp_MENU() {
     return (
         <UserSignUpMenu _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) }/>
     ) 
   }
 
-_userSignedIn() {
+
+  _userSignedIn() {
     return () => {
       this.setState({ topNavigatorType: trickMenu  })
     }
@@ -442,12 +497,12 @@ const localStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#fff',
   },
-    topMenu: {
-      position : 'absolute',
-      top : 0,
-      marginTop: 10,
-      height : '30%',
-      width : '40%',
+  topMenu: {
+    position : 'absolute',
+    top : 0,
+    marginTop: 10,
+    height : '30%',
+    width : '40%',
   },
 });
 

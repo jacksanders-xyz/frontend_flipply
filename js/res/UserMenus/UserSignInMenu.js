@@ -1,5 +1,5 @@
 'use strict';
-import React from 'react'
+import React, { useState } from 'react'
 import { 
   AppRegistry,
   Text,
@@ -14,9 +14,11 @@ import {
   ScrollView,
 } from 'react-native';
 
-
-
 const UserSignInMenu = (props) => {
+  
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+ 
   return (
     <View style={localStyles.flex}>
 
@@ -34,10 +36,10 @@ const UserSignInMenu = (props) => {
       </View>
     <View style={localStyles.inner}>
       <View style={localStyles.formBox}>
-        <TextInput style={localStyles.textInput} placeholder="Username" />
+        <TextInput style={localStyles.textInput} placeholder="Username" onChange={event => setUsername(event.target.value)}/>
       </View>
       <View style={localStyles.formBox}>
-        <TextInput style={localStyles.textInput} placeholder="Password" />
+        <TextInput style={localStyles.textInput} placeholder="Password" onChange={event => setPassword(event.target.value)}/>
       </View>
         <Text style={localStyles.titleText}>SIGN IN MENU</Text>
         <TouchableHighlight style={localStyles.buttons}
@@ -121,6 +123,7 @@ const UserSignInMenu = (props) => {
     },
     textInput: {
       flex: 1,
+      color: '#fff',
       borderColor: 'gray',
       borderWidth: 1,
       padding: 15,

@@ -8,8 +8,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^1.9.8",
     "react": "16.8.3",
     "react-native": "0.59.9",
+    "react-native-picker-select": "^8.0.4",
     "react-viro": "2.17.0"
   },
   "devDependencies": {
