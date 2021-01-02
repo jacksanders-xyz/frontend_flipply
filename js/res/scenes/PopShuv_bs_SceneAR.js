@@ -21,20 +21,17 @@ import {
 } from 'react-viro';
 
 
-export default class popShuv-it_bs_SceneAR extends Component {
+export default class PopShuv_bs_SceneAR extends Component {
   
   constructor() {
     super();
 
-    // Set initial state here, the state where the AR text lives, 
     this.state = {
       text : "Initializing AR...",
       flipMoment: "roll",
       flipping: false, 
     };
-    this._onInitialized = this._onInitialized.bind(this);
   }
-  
 
   render() {
     return (
@@ -84,28 +81,14 @@ trickStateManager = () => {
     } 
 
 }
-
-
-
-
-  // _onInitialized handles TRACKING 
-  //
-  //
-  // THIS IS FUNCTION will be triggered when everything is good to go! 
-  // It manages when things are setting up
-  // you pass it into the <ViroARScene> tag, it is the onTrackingUpdated attribute
-  // 
-  // all your jsx have access to this!!!!
-  // so if you make inner components, you give them the state of whether or not you're tracking
-  // or not, and can even give a function to handle if shit goes crayz (else if) 
-  // When everything is the steady and ready to render it sets the STATE of text
-  // to "jack".... your text jsx component then grabs it!
  
 _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
-      this.setState({
-        text : "getting ready to shred..."
-      });
+        return () => { 
+          this.setState({
+          text : "getting ready to shred..."
+        });
+      }
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
     }
@@ -136,6 +119,7 @@ ViroAnimations.registerAnimations({
   prePop: {
     properties: {
       rotateZ: "-=45",
+      rotateY: "-=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
@@ -144,6 +128,7 @@ ViroAnimations.registerAnimations({
   pop: {
     properties: {
       rotateZ: "-=5",
+      rotateY: "-=45",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
@@ -152,6 +137,7 @@ ViroAnimations.registerAnimations({
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateY: "-=45",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -159,6 +145,7 @@ ViroAnimations.registerAnimations({
   levelOut: {
     properties: {
       rotateZ: "+=15", 
+      rotateY: "-=45",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -182,4 +169,4 @@ ViroAnimations.registerAnimations({
 
 
 
-module.exports = popShuv-it_bs_SceneAR;
+module.exports = PopShuv_bs_SceneAR;

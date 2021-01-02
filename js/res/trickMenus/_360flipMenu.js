@@ -14,37 +14,18 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 //
-const ARTrickScene = require('../scenes/ollieSceneAR');
 //
-const OLLIE_MENU = "OLLIE_MENU";
-const OLLIE_INIT  = "OLLIE_INIT";
-const defaultNavigatorType = OLLIE_MENU;
-
-//
-
-
-
-export default class popShuv-it_fs_Menu extends Component {
-    constructor() {
-      super();
+export default class _360flipMenu extends Component {
+  constructor() {
+    super();
+  }
   
-      this.state = {
-        navigatorType : defaultNavigatorType,
-      }
-      this._exitViro = this._exitViro.bind(this);
-    }
-    // The top level switch, that says "has a button been pressed? which one?" based on the
-    // state of navigatorType
-    render() {
-      if (this.state.navigatorType == OLLIE_MENU) {
-        return this._displayOLLIE_MENU();
-      } else if (this.state.navigatorType == OLLIE_INIT) {
-        return null 
-      }
-    }
+  render() {
+      return this. _display360FLIP_MENU();
+  }
 
 
-  _displayOLLIE_MENU() {
+  _display360FLIP_MENU() {
     return (
         <View style={localStyles.flex}>
           <View style={localStyles.topMenu}>
@@ -62,14 +43,14 @@ export default class popShuv-it_fs_Menu extends Component {
           <View style={localStyles.outer}>
             <View style={localStyles.inner}>
               <Text style={localStyles.titleText}>
-             Frontside pop shuv-it menu
+                holy shit a tre bomb...
               </Text>
 
               <TouchableHighlight style={localStyles.buttons}
-              onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
+              onPress={() => this.props._begin_TrickScene("_360FLIP_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
-              AR Ollie
+              AR 360FLIP
               </Text>
               </TouchableHighlight>
             </View>
@@ -151,5 +132,5 @@ export default class popShuv-it_fs_Menu extends Component {
       top : 0,
     },
   });
-module.exports = popShuv-it_fs_Menu;
+module.exports = _360flipMenu;
 

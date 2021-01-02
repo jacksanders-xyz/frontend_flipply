@@ -14,37 +14,17 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 //
-const ARTrickScene = require('../scenes/ollieSceneAR');
 //
-const OLLIE_MENU = "OLLIE_MENU";
-const OLLIE_INIT  = "OLLIE_INIT";
-const defaultNavigatorType = OLLIE_MENU;
-
-//
-
-
-
-export default class popShuv-it_bs_Menu extends Component {
+export default class PopShuv_bs_Menu extends Component {
     constructor() {
       super();
-  
-      this.state = {
-        navigatorType : defaultNavigatorType,
-      }
-      this._exitViro = this._exitViro.bind(this);
     }
-    // The top level switch, that says "has a button been pressed? which one?" based on the
-    // state of navigatorType
+    
     render() {
-      if (this.state.navigatorType == OLLIE_MENU) {
-        return this._displayOLLIE_MENU();
-      } else if (this.state.navigatorType == OLLIE_INIT) {
-        return null 
-      }
+        return this._displayPOPSHUV_BS_MENU();
     }
 
-
-  _displayOLLIE_MENU() {
+  _displayPOPSHUV_BS_MENU() {
     return (
         <View style={localStyles.flex}>
           <View style={localStyles.topMenu}>
@@ -62,14 +42,14 @@ export default class popShuv-it_bs_Menu extends Component {
           <View style={localStyles.outer}>
             <View style={localStyles.inner}>
               <Text style={localStyles.titleText}>
-             Frontside pop shuv-it menu
+            The backside pop shuv it menu 
               </Text>
 
               <TouchableHighlight style={localStyles.buttons}
-              onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
+              onPress={() => this.props._begin_TrickScene("POPSHUV_BS_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
-              AR Ollie
+              bs pop shuv-it 
               </Text>
               </TouchableHighlight>
             </View>
@@ -77,15 +57,8 @@ export default class popShuv-it_bs_Menu extends Component {
         </View>
 
     )
-}
-
-  // This function "exits" Viro by setting the navigatorType to signInMenu.
-    _exitViro() {
-      this.setState({
-        navigatorType : signInMenu
-      })
-    }
   }
+}
   
   const localStyles = StyleSheet.create({
     flex : {
@@ -151,5 +124,5 @@ export default class popShuv-it_bs_Menu extends Component {
       top : 0,
     },
   });
-module.exports = popShuv-it_bs_Menu;
+module.exports = PopShuv_bs_Menu;
 

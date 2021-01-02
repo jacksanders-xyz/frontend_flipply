@@ -131,7 +131,7 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   prePop: {
     properties: {
@@ -139,44 +139,46 @@ ViroAnimations.registerAnimations({
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   pop: {
     properties: {
-      rotateZ: "-=5",
+      rotateX: "-=170",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateX: "-=140",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   levelOut: {
     properties: {
       rotateZ: "+=15", 
+      rotateX: "-=50",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   land: {
     properties: {
       rotateZ: "-=5", 
       positionY: "-=0.48",
-      positionX: "-=0.4",
+      positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   rollAway: {
     properties: {
       rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
 });
 

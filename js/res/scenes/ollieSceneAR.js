@@ -33,6 +33,7 @@ export default class ollieSceneAR extends Component {
       flipping: false, 
     };
     this._onInitialized = this._onInitialized.bind(this);
+    this.trickStateManager = this.trickStateManager.bind(this);
   }
   
 
@@ -180,6 +181,6 @@ ViroAnimations.registerAnimations({
   },
 });
 
-
-
+  
 module.exports = ollieSceneAR;
+

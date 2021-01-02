@@ -22,10 +22,11 @@ import {
   const [stance, setStance] = useState('')
  
   // for the button:
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = () => {
+    props.signUp_USER_()
   }
-
+ const handleUsernameChange = (text) => setUsername(text.target.value);
+ const handlePasswordChange = (text) => setPassword(text.target.value);
   
   return (
     <View style={localStyles.flex}>
@@ -44,14 +45,12 @@ import {
       </View>
     <View style={localStyles.inner}>
       <View style={localStyles.formBox}>
-        <TextInput style={localStyles.textInput} placeholder="Username" onChange={event => setUsername(event.target.value)}/>
+        <TextInput style={localStyles.textInput} value={username} placeholder="Username" onChange={handleUsernameChange}/>
       </View>
       <View style={localStyles.formBox}>
-        <TextInput type="password" style={localStyles.textInput} placeholder="Password" onChange={event => setPassword(event.target.value)}/>
+        <TextInput type="password" style={localStyles.textInput} value={password} placeholder="Password" onChange={handlePasswordChange}/>
       </View>
     
-
-
     <View style={localStyles.outsidePickerBox}>
     <View style={localStyles.pickerBox}>
     <Picker 
@@ -69,10 +68,10 @@ import {
       
       <Text style={localStyles.titleText}>SIGN UP MENU</Text>
         <TouchableHighlight style={localStyles.buttons}
-        onPress={() => props._userSignedIn()}
+        onPress={() => handleSubmit()}
         underlayColor={'#68a0ff'} >
         <Text style={localStyles.buttonText}>
-        Sign in 
+        Sign up 
         </Text>
       </TouchableHighlight>
     </View>

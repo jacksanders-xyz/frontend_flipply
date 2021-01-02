@@ -21,7 +21,7 @@ import {
 } from 'react-viro';
 
 
-export default class 360flipSceneAR extends Component {
+export default class _360flipSceneAR extends Component {
   
   constructor() {
     super();
@@ -135,7 +135,9 @@ ViroAnimations.registerAnimations({
   },
   prePop: {
     properties: {
-      rotateZ: "-=45",
+      rotateZ: "-=65",
+      rotateX: "-=55",
+      rotateY: "-=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
@@ -143,7 +145,9 @@ ViroAnimations.registerAnimations({
   },
   pop: {
     properties: {
+      rotateX: "-=90",
       rotateZ: "-=5",
+      rotateY: "-=60",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
@@ -152,13 +156,17 @@ ViroAnimations.registerAnimations({
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateX: "-=90",
+      rotateY: "-=95",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
   },
   levelOut: {
     properties: {
-      rotateZ: "+=15", 
+      rotateZ: "+=35", 
+      rotateX: "-=60",
+      rotateY: "-=90",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -166,6 +174,8 @@ ViroAnimations.registerAnimations({
   land: {
     properties: {
       rotateZ: "-=5", 
+      rotateX: "-=45",
+      rotateY: "-=60",
       positionY: "-=0.48",
       positionX: "-=0.4",
     },
@@ -176,10 +186,10 @@ ViroAnimations.registerAnimations({
       rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+      duration: 200, //.5 seconds
   },
 });
 
 
 
-module.exports = 360flipSceneAR;
+module.exports = _360flipSceneAR;

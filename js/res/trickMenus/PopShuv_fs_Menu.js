@@ -14,37 +14,34 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 //
-const ARTrickScene = require('../scenes/ollieSceneAR');
-//
-const OLLIE_MENU = "OLLIE_MENU";
-const OLLIE_INIT  = "OLLIE_INIT";
-const defaultNavigatorType = OLLIE_MENU;
+const POPSHUV_FS_MENU = "POPSHUV_FS__MENU";
+const POPSHUV_FS_INIT  = "POPSHUV_FS_INIT";
+const defaultNavigatorType = POPSHUV_FS_MENU;
 
 //
 
 
 
-export default class 360flipMenu extends Component {
+export default class PopShuv_fs_Menu extends Component {
     constructor() {
       super();
   
       this.state = {
         navigatorType : defaultNavigatorType,
       }
-      this._exitViro = this._exitViro.bind(this);
     }
     // The top level switch, that says "has a button been pressed? which one?" based on the
     // state of navigatorType
     render() {
-      if (this.state.navigatorType == OLLIE_MENU) {
-        return this._displayOLLIE_MENU();
-      } else if (this.state.navigatorType == OLLIE_INIT) {
+      if (this.state.navigatorType == POPSHUV_FS__MENU) {
+        return this._displayPOPSHUV_FS_MENU();
+      } else if (this.state.navigatorType == POPSHUV_FS_INIT) {
         return null 
       }
     }
 
 
-  _displayOLLIE_MENU() {
+    _displayPOPSHUV_FS_MENU() {
     return (
         <View style={localStyles.flex}>
           <View style={localStyles.topMenu}>
@@ -62,11 +59,11 @@ export default class 360flipMenu extends Component {
           <View style={localStyles.outer}>
             <View style={localStyles.inner}>
               <Text style={localStyles.titleText}>
-              Hey you're at the OllieMenu
+             Frontside pop shuv-it menu
               </Text>
 
               <TouchableHighlight style={localStyles.buttons}
-              onPress={() => this.props._begin_TrickScene("OLLIE_SCENE")}
+              onPress={() => this.props._begin_TrickScene("POPSHUV_FS_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
               AR Ollie
@@ -151,5 +148,5 @@ export default class 360flipMenu extends Component {
       top : 0,
     },
   });
-module.exports = 360flipMenu;
+module.exports = PopShuv_fs_Menu;
 

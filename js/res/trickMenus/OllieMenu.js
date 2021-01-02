@@ -14,11 +14,10 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 //
-const ARTrickScene = require('../scenes/ollieSceneAR');
 //
-const OLLIE_MENU = "OLLIE_MENU";
-const OLLIE_INIT  = "OLLIE_INIT";
-const defaultNavigatorType = OLLIE_MENU;
+// const OLLIE_MENU = "OLLIE_MENU";
+// const OLLIE_INIT  = "OLLIE_INIT";
+// const defaultNavigatorType = OLLIE_MENU;
 
 //
 
@@ -27,21 +26,22 @@ const defaultNavigatorType = OLLIE_MENU;
 export default class OllieMenu extends Component {
     constructor() {
       super();
-  
-      this.state = {
-        navigatorType : defaultNavigatorType,
-      }
-      this._exitViro = this._exitViro.bind(this);
     }
     // The top level switch, that says "has a button been pressed? which one?" based on the
     // state of navigatorType
+    
+
     render() {
-      if (this.state.navigatorType == OLLIE_MENU) {
-        return this._displayOLLIE_MENU();
-      } else if (this.state.navigatorType == OLLIE_INIT) {
-        return null 
-      }
+      return this._displayOLLIE_MENU();
     }
+    
+     // render() {
+    //   if (this.state.navigatorType == OLLIE_MENU) {
+    //     return this._displayOLLIE_MENU();
+    //   } else if (this.state.navigatorType == OLLIE_INIT) {
+    //     return null 
+    //   }
+    // }
 
 
   _displayOLLIE_MENU() {
@@ -77,15 +77,8 @@ export default class OllieMenu extends Component {
         </View>
 
     )
-}
-
-  // This function "exits" Viro by setting the navigatorType to signInMenu.
-    _exitViro() {
-      this.setState({
-        navigatorType : signInMenu
-      })
-    }
   }
+}
   
   const localStyles = StyleSheet.create({
     flex : {
@@ -151,5 +144,6 @@ export default class OllieMenu extends Component {
       top : 0,
     },
   });
-module.exports = OllieMenu;
+
+  module.exports = OllieMenu;
 

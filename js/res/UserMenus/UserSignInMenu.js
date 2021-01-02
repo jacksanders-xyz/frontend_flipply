@@ -18,10 +18,15 @@ const UserSignInMenu = (props) => {
   
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    props.login_USER_(username, password, stance)
+
+  }
  
   return (
     <View style={localStyles.flex}>
-
       <View style={localStyles.topMenu}>
           <TouchableOpacity 
             style={localStyles.flex}
