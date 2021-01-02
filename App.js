@@ -1,12 +1,3 @@
-/**
- * Copyright (c) 2017-present, Viro, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
 import React, { Component } from 'react';
 import { 
   AppRegistry,
@@ -24,6 +15,7 @@ import {
 import {
   ViroARSceneNavigator,
 } from 'react-viro';
+
 // MenuComponents: 
 import UserSignInMenu from './js/res/UserMenus/UserSignInMenu';
 import UserSignUpMenu from './js/res/UserMenus/UserSignUpMenu';
@@ -32,19 +24,14 @@ import UserSignUpMenu from './js/res/UserMenus/UserSignUpMenu';
 
 //TrickMenuComponents:
 import OllieMenu from './js/res/trickMenus/OllieMenu';
+import PopShuv_bs_Menu from './js/res/trickMenus/PopShuv_bs_Menu';
+import KickflipMenu from './js/res/trickMenus/KickflipMenu';
+import _360flipMenu from './js/res/trickMenus/_360flipMenu';
 
 // Urls
 const baseUrl = 'http://localhost:8000/'
 const usersUrl = `${baseUrl}users/` 
 const loginUrl = `${baseUrl}login/` 
-
-
-
-
-// TrickScenes:
-const OLLIE_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
-
-
 
 // Menu/navigator state
 const mainUserHomepage = "mainUserHomepage";
@@ -53,17 +40,17 @@ const signUpMenu = "signUpMenu";
 const trickMenu = "trickMenu";
 const trick_menu_nav = "A Tricks Menu Is on"  
 const trick_scene_nav = "A Trick Scene Is happening"  
-const defaultNavigatorType = mainUserHomepage
+const defaultNavigatorType = trick_scene_nav 
 
 // Trick menu Navigator State
 const OLLIE_MENU = "OLLIE_MENU";
-const defaultTrickMenu = ''
+const POPSHUV_BS_MENU = "POPSHUV_BS_MENU";
+const KICKFLIP_MENU = "KICKFLIP_MENU";
+const _360FLIP_MENU = "_360FLIP_MENU";
+const defaultTrickMenu = _360FLIP_MENU 
 
-//Trick Scene state
-const OLLIE_SCENE = "OLLIE_SCENE"
-const AR_NAVIGATOR_TYPE = "AR";
-const defaultTrickScene = ''
-
+//Trick Scene state starts as an empty string
+const defaultTrickScene = "_360FLIP_SCENE"
 
 export default class ViroSample extends Component {
   constructor() {
@@ -75,13 +62,24 @@ export default class ViroSample extends Component {
       user: {},
       error: ''
     }
-    this._userSignInMenu = this._userSignInMenu.bind(this);
-    this._userSignedIn= this._userSignedIn.bind(this);
-    this._trickMenuSelector = this._trickMenuSelector.bind(this);
-//
-    this._init_TrickScene = this._init_TrickScene.bind(this);
-    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
-    this._exitViro = this._exitViro.bind(this);
+         this._userSignInMenu = this._userSignInMenu.bind(this);
+         this._begin_UserSignIn_MENU = this._begin_UserSignIn_MENU.bind(this);
+    // login_user will go here
+         this._init_UserSignIn_MENU = this._init_UserSignIn_MENU.bind(this);
+         this._begin_UserSignUp_MENU = this._begin_UserSignUp_MENU.bind(this);
+         this.signUp_USER_ = this.signUp_USER_.bind(this);
+         this._init_UserSignUp_MENU = this._init_UserSignUp_MENU.bind(this);
+         this._userSignedIn= this._userSignedIn.bind(this);
+         this._userSignedIn= this._userSignedIn.bind(this);
+         this._trickMenuSelector = this._trickMenuSelector.bind(this);
+         this._begin_TrickMenu = this._begin_TrickMenu.bind(this);
+         this._init_TrickMenu = this._init_TrickMenu.bind(this);
+         this._begin_TrickScene = this._begin_TrickScene.bind(this);
+         this._init_TrickScene = this._init_TrickScene.bind(this);
+         this._back_toTricksMenu = this._back_toTricksMenu.bind(this);
+         this._backARROW_scene = this._backARROW_scene.bind(this);
+         this._back_toMainTrickMenu = this._back_toMainTrickMenu.bind(this);
+
   }
   render() {
     if (this.state.topNavigatorType == mainUserHomepage) {
@@ -94,18 +92,19 @@ export default class ViroSample extends Component {
       return this._trickMenuSelector();
     } else if (this.state.topNavigatorType == trick_menu_nav) {
       return this._init_TrickMenu(this.state.lastClickedTrickMenu);
-    } else if ( this.state.topNavigatorType == trick_scene_nav) {
-      return this._init_TrickScene(this.state.lastClickedTrickScene);
+    } else if (this.state.topNavigatorType == trick_scene_nav) {
+       return this._init_TrickScene(this.state.lastClickedTrickScene);
     }
 }
-// To make the other buttons just fire ollie, pop next to trick scene nav switch
-// this.state.topNavigatorType == AR_NAVIGATOR_TYPE ||
+  
+
+
   _userSignInMenu() {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
           <Text style={localStyles.titleText}>
-          Welcome to flipply, please Sign in: 
+          Welcome to flipply, {this.state.user.username} 
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
@@ -137,40 +136,39 @@ export default class ViroSample extends Component {
     }
   }
  
-  login_USER_ = (username, password) => {
-      fetch(loginUrl, {
-        method: 'POST',
-      headers: {
-        "Content-Type": "application/json"  
-        },
-        body: JSON.stringify({
-          user: {
-            username,
-            password
-          }
-        })
-      })
-      .then(response => response.json())
-      .then(result => {
-      if(result.token) {
-        localStorage.setItem('token', result.token)
-        this.setState({
-          user: result.user
-        })
-      } else {
-        this.setState({
-          error: result
-        })
-      }
-    })
-  }
+  // login_USER_ = (username, password) => {
+  //     fetch(loginUrl, {
+  //       method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json"  
+  //       },
+  //       body: JSON.stringify({
+  //         user: {
+  //           username: username,
+  //           password: password
+  //         }
+  //       })
+  //     })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //     if(result.token) {
+  //       this.setState({
+  //         user: result.user
+  //       })
+  //     } else {
+  //       this.setState({
+  //         error: result
+  //       })
+  //     }
+  //   })
+  // }
   
   _init_UserSignIn_MENU() {
     return (
-        <UserSignInMenu login_USER_={this._login_USER} error={this.state.error} _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) } />
+        <UserSignInMenu user={this.state.user}  error={this.state.error} _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) } />
     ) 
   }
-  
+
   _begin_UserSignUp_MENU() {
       return () => { this.setState({
         topNavigatorType: signUpMenu 
@@ -178,30 +176,27 @@ export default class ViroSample extends Component {
     }
   }
 
-  signUp_USER_ = user => {
-    fetch(usersUrl, {
+  signUp_USER_ = () => {
+    fetch('http://localhost:8000/users/', {
     method: "POST",
     headers: {
-      "Accept": "application/json",
       "Content-Type": "application/json"  
       },  
       body: JSON.stringify({
-        user: {
-          username: user.username,
-          password: user.password,
-          stance: user.stance 
-        }
+          username: "hey",
+          password: "please",
+          stance: "goofy",
       })
-      .then(response => response.json())
-      .then(user => this.setState({ user }))
-    })
+      }).then(response => response.json())  
+        .then(user => this.setState({user}))
+        .then(this._userSignedIn())
   }
   
 
 
   _init_UserSignUp_MENU() {
     return (
-        <UserSignUpMenu _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) }/>
+        <UserSignUpMenu signUp_USER_={this.signUp_USER_} _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) }/>
     ) 
   }
 
@@ -240,7 +235,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          onPress={this._begin_TrickMenu(POPSHUV_BS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           backside pop shuv-it
@@ -249,7 +244,6 @@ export default class ViroSample extends Component {
 
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           frontside pop shuv-it
@@ -262,7 +256,7 @@ export default class ViroSample extends Component {
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          onPress={this._begin_TrickMenu(KICKFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Kickflip
@@ -271,7 +265,6 @@ export default class ViroSample extends Component {
 
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Heelflip 
@@ -279,7 +272,6 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Varial flip
@@ -287,7 +279,6 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Varial Heel-flip
@@ -295,7 +286,6 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Hard flip
@@ -307,7 +297,6 @@ export default class ViroSample extends Component {
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Backside 360 Shuv-it
@@ -315,7 +304,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+          onPress={this._begin_TrickMenu(_360FLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           360 flip
@@ -323,7 +312,6 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Frontside 360 shuv-it
@@ -331,7 +319,6 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
-          onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Laser flip
@@ -356,17 +343,39 @@ _begin_TrickMenu(TrickMenu) {
       })
     } 
   }
-_init_TrickMenu(TrickMenu) { 
-    if (TrickMenu = OLLIE_MENU) { 
+
+  _init_TrickMenu(TrickMenu) { 
+    if (TrickMenu == OLLIE_MENU) { 
       return (
       <View style={localStyles.outer}>
       <OllieMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
       </View>
       );
+    } else if (TrickMenu == POPSHUV_BS_MENU) {
+      return (
+      <View style={localStyles.outer}>
+      <PopShuv_bs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+      </View>
+      );
+    } else if (TrickMenu == KICKFLIP_MENU ) {
+      return (
+      <View style={localStyles.outer}>
+      <KickflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+      </View>
+      );
+    } else if (TrickMenu == _360FLIP_MENU ) {
+      return (
+      <View style={localStyles.outer}>
+      <_360flipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+      </View>
+      );
     }
+
+
   }
-_begin_TrickScene(TrickScene) {
-    return () => {
+
+  _begin_TrickScene(TrickScene) {
+    return (TrickScene) => {
       this.setState({ 
         topNavigatorType : trick_scene_nav,
         lastClickedTrickScene : TrickScene
@@ -375,31 +384,56 @@ _begin_TrickScene(TrickScene) {
   }
 
 _init_TrickScene(TrickScene) {
-      if (TrickScene = OLLIE_SCENE) {
-        return (
-          <View style={localStyles.flex}>
-          <StatusBar hidden={false}/>
-          <ViroARSceneNavigator initialScene={{scene: OLLIE_trick_SCENE}} />
-          {this._backARROW_scene()}
-          </View>
+    if (TrickScene == "OLLIE_SCENE") {
+      const Ollie_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
+      return (
+        <View style={localStyles.flex}>
+        <StatusBar hidden={false}/>
+        <ViroARSceneNavigator initialScene={{scene: Ollie_trick_SCENE}} />
+        {this._backARROW_scene()}
+        </View>
+      );
+    } else if (TrickScene == "POPSHUV_BS_SCENE") {
+      const PopShuv_bs_trick_SCENE = require('./js/res/scenes/PopShuv_bs_SceneAR');
+      return (
+        <View style={localStyles.flex}>
+        <StatusBar hidden={false}/>
+        <ViroARSceneNavigator initialScene={{scene: PopShuv_bs_trick_SCENE}} />
+        {this._backARROW_scene()}
+        </View>
+      );
+    } else if (TrickScene == "KICKFLIP_SCENE") {
+      const kickflipSceneAR = require('./js/res/scenes/kickflipSceneAR');
+      return (
+        <View style={localStyles.flex}>
+        <StatusBar hidden={false}/>
+        <ViroARSceneNavigator initialScene={{scene: kickflipSceneAR}} />
+        {this._backARROW_scene()}
+        </View>
+      );
+    } else if (TrickScene == "_360FLIP_SCENE") {
+      const _360flipSceneAR = require('./js/res/scenes/_360flipSceneAR');
+      return (
+        <View style={localStyles.flex}>
+        <StatusBar hidden={false}/>
+        <ViroARSceneNavigator initialScene={{scene: _360flipSceneAR}} />
+        {this._backARROW_scene()}
+        </View>
       );
     }
+
+
+
   }
+
+
   
 
-  // This function returns an anonymous/lambda function to be used
-  // by the experience selector buttons
 
-  _getExperienceButtonOnPress(topNavigatorType) {
-    return () => {
-      this.setState({
-        topNavigatorType : navigatorType
-      })
-    }
-  }
 
-//out of scene into trick menu
-_back_toTricksMenu() {
+
+
+  _back_toTricksMenu() {
     return () => {
       this.setState({
         topNavigatorType : trick_menu_nav,
@@ -408,36 +442,30 @@ _back_toTricksMenu() {
     }
 } 
 
-_backARROW_scene() {
-return (
-    <View style={localStyles.topMenu}>
-      <TouchableOpacity style={localStyles.flex}activeOpacity={.5} onPress={this._back_toTricksMenu()}>
-      <Image 
-      style={localStyles.topMenu}
-      source={require('./js/res/archive/icon_left_w.png')}        
-      />
-      </TouchableOpacity>
-    </View>
-  );
+  _backARROW_scene() {
+    return (
+        <View style={localStyles.topMenu}>
+          <TouchableOpacity style={localStyles.flex}activeOpacity={.5} onPress={this._back_toTricksMenu()}>
+          <Image 
+          style={localStyles.topMenu}
+          source={require('./js/res/archive/icon_left_w.png')}        
+          />
+          </TouchableOpacity>
+        </View>
+      );
 }
 
 
 
 //out of trick menu to main trick menu
-_back_toMainTrickMenu() {
-    return () => {
-      this.setState({
-        topNavigatorType : trickMenu,
-        lastClickedTrickMenu : defaultTrickMenu 
-      })
-    }
-} 
-  // This function "exits" Viro by setting the topNavigatorType to mainUserHomepage.
-  _exitViro() {
-      this.setState({
-        topNavigatorType : mainUserHomepage
-      })
-    }
+  _back_toMainTrickMenu() {
+        return () => {
+          this.setState({
+            topNavigatorType : trickMenu,
+            lastClickedTrickMenu : defaultTrickMenu 
+          })
+        }
+      } 
   }
 
 const localStyles = StyleSheet.create({
