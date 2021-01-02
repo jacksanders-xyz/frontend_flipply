@@ -51,7 +51,8 @@ Figment/ios/Pods/
 Figment/ios/Podfile.lock
 Figment/ios/ngrokendpoint.txt
 
-
+# ios
+ios
 # Node
 node_modules
 npm-debug.log
