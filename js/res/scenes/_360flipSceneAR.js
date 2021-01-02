@@ -131,62 +131,62 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   prePop: {
     properties: {
       rotateZ: "-=65",
-      rotateX: "-=55",
-      rotateY: "-=45",
+      rotateX: "-=65",
+      rotateY: "+=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   pop: {
     properties: {
-      rotateX: "-=90",
       rotateZ: "-=5",
-      rotateY: "-=60",
-      positionY: "+=0.3",
+      rotateX: "-=100",
+      rotateY: "+=60",
+      positionY: "+=0.2",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   postPop: {
     properties: {
       rotateZ: "+=35", 
       rotateX: "-=90",
-      rotateY: "-=95",
+      rotateY: "+=95",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   levelOut: {
     properties: {
       rotateZ: "+=35", 
       rotateX: "-=60",
-      rotateY: "-=90",
+      rotateY: "+=90",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   land: {
     properties: {
       rotateZ: "-=5", 
       rotateX: "-=45",
-      rotateY: "-=60",
-      positionY: "-=0.48",
+      rotateY: "+=60",
+      positionY: "-=0.38",
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+    duration: 1000, //.5 seconds
   },
   rollAway: {
     properties: {
       rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-      duration: 200, //.5 seconds
+      duration: 1000, //.5 seconds
   },
 });
 
