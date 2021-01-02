@@ -53,6 +53,7 @@ Figment/ios/ngrokendpoint.txt
 
 # ios
 ios
+ios/Pods/GVRSDK/Libraries/libGVRSDK.a
 # Node
 node_modules
 npm-debug.log
