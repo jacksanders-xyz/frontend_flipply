@@ -1,14 +1,4 @@
-
 import React, { Component } from 'react';
-
-
-
-
-
-
-
-
-
 import { 
   AppRegistry,
   Text,
