@@ -3,4 +3,6 @@ target 'frontend_flipply' do
   use_frameworks!
   pod 'ViroReact', :path => '../node_modules/react-viro/ios/'
   pod 'ViroKit', :path => '../node_modules/react-viro/ios/dist/ViroRenderer/'
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
 end

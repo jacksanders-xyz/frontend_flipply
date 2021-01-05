@@ -131,7 +131,7 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   prePop: {
     properties: {
@@ -141,7 +141,7 @@ ViroAnimations.registerAnimations({
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   pop: {
     properties: {
@@ -151,7 +151,7 @@ ViroAnimations.registerAnimations({
       positionY: "+=0.2",
       positionX: "-=0.1",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   postPop: {
     properties: {
@@ -160,7 +160,7 @@ ViroAnimations.registerAnimations({
       rotateY: "+=95",
       positionX: "-=0.3",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   levelOut: {
     properties: {
@@ -169,7 +169,7 @@ ViroAnimations.registerAnimations({
       rotateY: "+=90",
       positionX: "-=0.3",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   land: {
     properties: {
@@ -179,14 +179,14 @@ ViroAnimations.registerAnimations({
       positionY: "-=0.38",
       positionX: "-=0.4",
     },
-    duration: 1000, //.5 seconds
+    duration: 200, //.5 seconds
   },
   rollAway: {
     properties: {
       rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-      duration: 1000, //.5 seconds
+      duration: 200, //.5 seconds
   },
 });
 

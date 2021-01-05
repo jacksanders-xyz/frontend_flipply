@@ -4,6 +4,7 @@ import {
   AppRegistry,
   Text,
   Image,
+  ImageBackground,
   View,
   Picker,
   TextInput,
@@ -16,6 +17,7 @@ import {
 } from 'react-native';
   const UserSignUpMenu = (props) => {
  
+  const boardImage = {uri: "https://pngimg.com/uploads/skateboard/skateboard_PNG11749.png"}
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -29,7 +31,7 @@ import {
  const handlePasswordChange = (text) => setPassword(text.target.value);
   
   return (
-    <View style={localStyles.flex}>
+    <ImageBackground source={boardImage} style={localStyles.backImage} imageStyle={{ opacity: 0.7 }}>
 
       <View style={localStyles.topMenu}>
           <TouchableOpacity 
@@ -66,16 +68,15 @@ import {
     </View>
     </View>
       
-      <Text style={localStyles.titleText}>SIGN UP MENU</Text>
         <TouchableHighlight style={localStyles.buttons}
         onPress={() => handleSubmit()}
         underlayColor={'#68a0ff'} >
         <Text style={localStyles.buttonText}>
-        Sign up 
+        sign up 
         </Text>
       </TouchableHighlight>
     </View>
-    </View>
+       </ImageBackground> 
   )
 }
  
@@ -83,7 +84,6 @@ import {
   const localStyles = StyleSheet.create({
     flex : {
       flex : 1,
-      backgroundColor: "black",
     },
     viroContainer : {
       flex : 1,
@@ -98,7 +98,6 @@ import {
       flex : 1,
       flexDirection: 'column',
       alignItems:'center',
-      backgroundColor: "black",
     },
    formBox: {
       flexDirection: 'row',
@@ -136,7 +135,7 @@ import {
       marginTop: 10,
       alignSelf: 'center',
       marginBottom: 10,
-      backgroundColor:'#68a0cf',
+      backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#fff',
@@ -168,6 +167,12 @@ import {
       marginBottom: 10,
       marginLeft: 10,
       marginRight: 10,
+    },
+    backImage: {
+      flex: 1,
+      resizeMode: "cover",
+      justifyContent: "center",
+      backgroundColor: 'hsla(205, 83%, 16%, 0.87)'
     },
   });
 export default UserSignUpMenu;

@@ -4,6 +4,7 @@ import {
   AppRegistry,
   Text,
   Image,
+  ImageBackground,
   View,
   TextInput,
   StatusBar,
@@ -14,7 +15,8 @@ import {
   ScrollView,
 } from 'react-native';
 
-const UserSignInMenu = (props) => {
+  const UserSignInMenu = (props) => {
+  const boardImage = {uri: "https://pngimg.com/uploads/skateboard/skateboard_PNG11748.png"}
   
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -26,7 +28,7 @@ const UserSignInMenu = (props) => {
   }
  
   return (
-    <View style={localStyles.flex}>
+    <ImageBackground source={boardImage} style={localStyles.backImage} imageStyle={{ opacity: 0.7 }}>
       <View style={localStyles.topMenu}>
           <TouchableOpacity 
             style={localStyles.flex}
@@ -46,23 +48,21 @@ const UserSignInMenu = (props) => {
       <View style={localStyles.formBox}>
         <TextInput style={localStyles.textInput} placeholder="Password" onChange={event => setPassword(event.target.value)}/>
       </View>
-        <Text style={localStyles.titleText}>SIGN IN MENU</Text>
         <TouchableHighlight style={localStyles.buttons}
         onPress={() => props._userSignedIn()}
         underlayColor={'#68a0ff'} >
         <Text style={localStyles.buttonText}>
-        Sign in 
+        sign in 
         </Text>
       </TouchableHighlight>
-    </View>
-    </View>
+        </View>
+       </ImageBackground> 
   );
 }
  
   const localStyles = StyleSheet.create({
     flex : {
       flex : 1,
-      backgroundColor: "black",
     },
     viroContainer : {
       flex : 1,
@@ -77,7 +77,6 @@ const UserSignInMenu = (props) => {
       flex : 1,
       flexDirection: 'column',
       alignItems:'center',
-      backgroundColor: "black",
     },
     formBox: {
       flexDirection: 'row',
@@ -103,7 +102,7 @@ const UserSignInMenu = (props) => {
       marginTop: 10,
       alignSelf: 'center',
       marginBottom: 10,
-      backgroundColor:'#68a0cf',
+      backgroundColor:'hsla(205, 83%, 16%, 0.67)',
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#fff',
@@ -135,6 +134,12 @@ const UserSignInMenu = (props) => {
       marginBottom: 10,
       marginLeft: 10,
       marginRight: 10,
+    },
+    backImage: {
+      flex: 1,
+      resizeMode: "cover",
+      justifyContent: "center",
+      backgroundColor: 'hsla(205, 83%, 16%, 0.87)'
     },
   });
 export default UserSignInMenu;

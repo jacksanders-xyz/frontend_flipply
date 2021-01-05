@@ -6,6 +6,7 @@ import {
   View,
   StatusBar,
   StyleSheet,
+  ImageBackground,
   PixelRatio,
   TouchableHighlight,
   TouchableOpacity,
@@ -32,7 +33,9 @@ import _360flipMenu from './js/res/trickMenus/_360flipMenu';
 const baseUrl = 'http://localhost:8000/'
 const usersUrl = `${baseUrl}users/` 
 const loginUrl = `${baseUrl}login/` 
-
+// IMAGE URI's
+const boardImage = {uri: "https://pngimg.com/uploads/skateboard/skateboard_PNG11709.png"}
+const Image2 = {uri: "https://www.nikesb.com/assets/imager/uploads/7035/nikesb-fpar-keyakiIke_NollieHalfCabFlip_bd624c85e984eb4b3e5bbc5eb4b33f00.jpg"}
 // Menu/navigator state
 const mainUserHomepage = "mainUserHomepage";
 const signInMenu = "signInMenu";
@@ -40,18 +43,18 @@ const signUpMenu = "signUpMenu";
 const trickMenu = "trickMenu";
 const trick_menu_nav = "A Tricks Menu Is on"  
 const trick_scene_nav = "A Trick Scene Is happening"  
-const defaultNavigatorType = trick_scene_nav 
-
+const defaultNavigatorType = mainUserHomepage
+// trick_scene_nav
 // Trick menu Navigator State
 const OLLIE_MENU = "OLLIE_MENU";
 const POPSHUV_BS_MENU = "POPSHUV_BS_MENU";
 const KICKFLIP_MENU = "KICKFLIP_MENU";
 const _360FLIP_MENU = "_360FLIP_MENU";
-const defaultTrickMenu = _360FLIP_MENU 
-
+const defaultTrickMenu = '' 
+// _360FLIP_MENU
 //Trick Scene state starts as an empty string
-const defaultTrickScene = "_360FLIP_SCENE"
-
+const defaultTrickScene = ''
+// "_360FLIP_SCENE"
 export default class ViroSample extends Component {
   constructor() {
     super();
@@ -101,31 +104,26 @@ export default class ViroSample extends Component {
 
   _userSignInMenu() {
     return (
-      <View style={localStyles.outer}>
-        <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>
-          Welcome to flipply, {this.state.user.username} 
+      <ImageBackground source={require('./js/res/photos/kickflip.jpg')} style={localStyles.backImage} imageStyle={{ opacity: 0.7 }}>
+          <Text style={localStyles.flipplyText}>
+          flipply.
           </Text>
-
-          <TouchableHighlight style={localStyles.buttons}
+          <TouchableHighlight style={localStyles.slimButtons}
           onPress={this._begin_UserSignIn_MENU()}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Sign in Menu
+          <Text style={localStyles.slimButtonText}>
+          sign in 
           </Text>
           </TouchableHighlight>
           
-          <TouchableHighlight style={localStyles.buttons}
+          <TouchableHighlight style={localStyles.slimButtons}
           onPress={this._begin_UserSignUp_MENU()}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Sign up Menu
+          <Text style={localStyles.slimButtonText}>
+          sign up
           </Text>
           </TouchableHighlight>
-
-        </View>
-      </View>
-
+       </ImageBackground> 
     );
   }
 
@@ -210,20 +208,17 @@ export default class ViroSample extends Component {
 // THE MAIN MENU, (returns js for the main menu) 
   _trickMenuSelector() {
     return (
+      <ImageBackground source={Image2} style={localStyles.backImage} imageStyle={{ opacity: 0.7 }}>
       <View style={localStyles.outer} >
         <View style={localStyles.inner} >
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false} >
        
-         <Text style={localStyles.titleText}>
-          Welcome to FLIPPLY, 
-          </Text>
-
-         <Text style={localStyles.titleText}>
-           Pick a trick
+         <Text style={localStyles.flipplyText}>
+          flipply 
           </Text>
 
           <Text style={localStyles.titleText}>
-          Beginner
+          Beginner:
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
@@ -238,21 +233,21 @@ export default class ViroSample extends Component {
           onPress={this._begin_TrickMenu(POPSHUV_BS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
-          backside pop shuv-it
+          Pop shuv-it
           </Text>
           </TouchableHighlight>
 
 
           <TouchableHighlight style={localStyles.buttons}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          frontside pop shuv-it
+          <Text style={localStyles.longButtonText}>
+          frontside {"\n"}Pop shuv-it
           </Text>
           </TouchableHighlight>
 
 
           <Text style={localStyles.titleText}>
-          Intermediate
+          Intermediate:
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
@@ -281,7 +276,7 @@ export default class ViroSample extends Component {
           <TouchableHighlight style={localStyles.buttons}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
-          Varial Heel-flip
+          Varial Heel
           </Text>
           </TouchableHighlight>
 
@@ -293,12 +288,12 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <Text style={localStyles.titleText}>
-          Advanced
+          Advanced:
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
+          <Text style={localStyles.longButtonText}>
           Backside 360 Shuv-it
           </Text>
           </TouchableHighlight>
@@ -313,8 +308,8 @@ export default class ViroSample extends Component {
 
           <TouchableHighlight style={localStyles.buttons}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Frontside 360 shuv-it
+          <Text style={localStyles.longButtonText}>
+          frontside 360 shuv-it
           </Text>
           </TouchableHighlight>
 
@@ -327,12 +322,10 @@ export default class ViroSample extends Component {
 
         </ScrollView>
         </View>
-      </View>
+        </View>
+       </ImageBackground> 
     );
   }
-
-
-
 // MENUS
 
 _begin_TrickMenu(TrickMenu) {
@@ -480,13 +473,12 @@ const localStyles = StyleSheet.create({
     flex : 1,
     flexDirection: 'row',
     alignItems:'center',
-    backgroundColor: "black",
   },
   inner: {
     flex : 1,
+    marginLeft: 20,
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
   },
   titleText: {
     paddingTop: 30,
@@ -495,12 +487,45 @@ const localStyles = StyleSheet.create({
     textAlign:'center',
     fontSize : 25
   },
+  flipplyText: {
+    paddingTop: 30,
+    paddingBottom: 20,
+    fontFamily: 'Futura-CondensedExtraBold',
+    fontWeight: 'bold',
+    color:'black',
+    textAlign:'center',
+    fontSize : 40 
+  },
   buttonText: {
     color:'#fff',
     textAlign:'center',
+    marginTop: 10,
     fontSize : 20
   },
+  longButtonText: {
+    color:'#fff',
+    textAlign:'center',
+    fontSize : 16
+  },
+  slimButtonText: {
+    color:'#fff',
+    textAlign:'center',
+    fontSize: 20 
+  },
   buttons : {
+    height: 100,
+    width: 150,
+    paddingTop:20,
+    paddingBottom:20,
+    marginTop: 10,
+    alignSelf: 'center',
+    marginBottom: 10,
+    backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+  },
+  slimButtons : {
     height: 80,
     width: 150,
     paddingTop:20,
@@ -508,7 +533,7 @@ const localStyles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'center',
     marginBottom: 10,
-    backgroundColor:'#68a0cf',
+    backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
@@ -526,11 +551,17 @@ const localStyles = StyleSheet.create({
     borderColor: '#fff',
   },
   topMenu: {
-    position : 'absolute',
-    top : 0,
-    marginTop: 10,
-    height : '30%',
+    height : '20%',
     width : '40%',
+    position: 'absolute',
+    marginTop: 15,
+    top : 0,
+  },
+  backImage: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    backgroundColor: 'hsla(205, 83%, 16%, 0.87)'
   },
 });
 
