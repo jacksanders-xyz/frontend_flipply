@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 import { StyleSheet, View } from 'react-native';
 
+
 import {
   ViroARScene,
   ViroText,
@@ -77,26 +78,23 @@ trickStateManager = () => {
     } else if (this.state.flipMoment == "levelOut") {
       return this.setState({ flipMoment: "land"})
     } else if (this.state.flipMoment == "land") {
-      return this.setState({ flipMoment: "rollAway" })
+      return this.setState({ flipMoment: "rollAway"})
     } else if (this.state.flipMoment == "rollAway") {
       return this.setState({ flipping: false, flipMoment: "roll" })
     } 
 
 }
- 
 
-
-
-
-  _onInitialized(state, reason) {
+ _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
-      return null 
+      this.setState({
+        text : "getting ready to shred..."
+      });
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
     }
   }
 }
-// this.trickStarter()
 
 //
 const styles = StyleSheet.create({
@@ -115,67 +113,58 @@ const styles = StyleSheet.create({
 ViroAnimations.registerAnimations({
   roll: {
     properties: {
-      positionX: "-=0.40",
+      positionX: "-=0.3",
     },
-    duration: 400, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   prePop: {
     properties: {
-      rotateZ: "-=75",
-      rotateY: "+=60",
-      rotateX: "-=40",
-      positionY: "+=0.15",
-      positionX: "-=0.05",
-      positionZ: "-=0.04"
+      rotateZ: "-=65",
+      rotateY: "+=65",
+      positionY: "+=0.18",
+      positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   pop: {
     properties: {
-      rotateZ: "+=80",
-      rotateY: "+=80",
-      rotateX: "-=100",
-      positionY: "+=0.2",
-      positionX: "-=0.05",
-      positionZ: "-=0.06"
-
+      rotateZ: "-=5",
+      rotateX: "-=120",
+      rotateY: "+=60",
+      positionY: "+=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   postPop: {
     properties: {
-      rotateZ: "-=15",
-      rotateY: "+=80",
-      rotateX: "-=80",
-      positionY: "+=0.08",
-      positionX: "-=0.26",
+      rotateZ: "+=35", 
+      rotateX: "-=120",
+      rotateY: "+=95",
     },
-    duration: 200, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   levelOut: {
     properties: {
-      rotateZ: "+=10",
-      rotateY: "+=75",
-      rotateX: "-=70",
-      positionX: "-=0.16",
-      positionY: "-=0.09",
+      rotateZ: "+=35", 
+      rotateY: "+=90",
+      positionY: "-=0.08",
     },
-    duration: 200, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   land: {
     properties: {
-      rotateY: "+=65",
-      rotateX: "-=70",
-      positionY: "-=0.34",
-      positionX: "-=0.18",
+      rotateZ: "-=5", 
+      rotateY: "+=40",
+      positionY: "-=0.2",
     },
-    duration: 200, //.5 seconds
+    duration: 2000, //.5 seconds
   },
   rollAway: {
     properties: {
+      rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-      duration: 400, //.5 seconds
+      duration: 2000, //.5 seconds
   },
 });
 

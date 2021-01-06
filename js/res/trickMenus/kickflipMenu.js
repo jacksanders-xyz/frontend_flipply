@@ -156,7 +156,7 @@ export default class KickflipMenu extends Component {
       borderColor: '#fff',
     },
     topMenu: {
-      height : '50%',
+      height : '23%',
       width : '40%',
       top : 0,
     },

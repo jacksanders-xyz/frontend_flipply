@@ -159,7 +159,7 @@
       borderColor: '#fff',
     },
     topMenu: {
-      height : '50%',
+      height : '22%',
       width : '40%',
       top : 0,
     },

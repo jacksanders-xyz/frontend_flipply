@@ -165,7 +165,7 @@ export default class _360flipMenu extends Component {
       borderColor: '#fff',
     },
     topMenu: {
-      height : '50%',
+      height : '30%',
       width : '40%',
       top : 0,
     },

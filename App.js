@@ -50,7 +50,7 @@ const OLLIE_MENU = "OLLIE_MENU";
 const POPSHUV_BS_MENU = "POPSHUV_BS_MENU";
 const KICKFLIP_MENU = "KICKFLIP_MENU";
 const _360FLIP_MENU = "_360FLIP_MENU";
-const defaultTrickMenu = '' 
+const defaultTrickMenu = ''
 // _360FLIP_MENU
 //Trick Scene state starts as an empty string
 const defaultTrickScene = ''
