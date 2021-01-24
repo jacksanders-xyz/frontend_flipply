@@ -15,16 +15,16 @@ import {
 } from 'react-viro';
 //
 //
-export default class LaserflipMenu extends Component {
+export default class _3Shuv_fs_Menu extends Component {
     constructor() {
       super();
     }
     
     render() {
-        return this._displayLASERFLIP_MENU();
+        return this._display3SHUV_FS_MENU();
     }
 
-  _displayLASERFLIP_MENU() {
+  _display3SHUV_FS_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
           <View style={{height: 2000}}>
@@ -41,7 +41,7 @@ export default class LaserflipMenu extends Component {
 
               <View style={localStyles.textFlex}>
                 <Text style={localStyles.titleText}>
-                Laserflips, write some shit about laserflips  now
+                Frontside 3Shuv menu, write some shit about backside 3 shuvs now
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
@@ -168,5 +168,5 @@ export default class LaserflipMenu extends Component {
     },
   });
 
-module.exports = LaserflipMenu;
+module.exports = _3Shuv_fs_Menu;
 

@@ -30,7 +30,10 @@ import HeelflipMenu from './js/res/trickMenus/heelflipMenu';
 import VarialflipMenu from './js/res/trickMenus/varialflipMenu.js';
 import VarialheelflipMenu from './js/res/trickMenus/varial_heelflipMenu.js';
 import HardflipMenu from './js/res/trickMenus/hardflipMenu.js';
+import _3Shuv_bs_Menu from './js/res/trickMenus/_3Shuv_bs_Menu.js';
 import _360flipMenu from './js/res/trickMenus/_360flipMenu';
+import _3Shuv_fs_Menu from './js/res/trickMenus/_3Shuv_fs_Menu.js';
+import LaserflipMenu from './js/res/trickMenus/laserflipMenu';
  
 // Urls
 const baseUrl = 'http://localhost:8000/'
@@ -57,7 +60,10 @@ const HEELFLIP_MENU = "HEELFLIP_MENU";
 const VARIALFLIP_MENU = "VARIALFLIP_MENU";
 const VARIALHEELFLIP_MENU = "VARIALHEELFLIP_MENU";
 const HARDFLIP_MENU = "HARDFLIP_MENU";
+const _3SHUV_BS_MENU = "_3SHUV_BS_MENU";
 const _360FLIP_MENU = "_360FLIP_MENU";
+const _3SHUV_FS_MENU = "_3SHUV_FS_MENU";
+const LASERFLIP_MENU = "LASERFLIP_MENU";
 const defaultTrickMenu = ''
 // _360FLIP_MENU
 //Trick Scene state starts as an empty string
@@ -302,6 +308,7 @@ export default class ViroSample extends Component {
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(_3SHUV_BS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.longButtonText}>
           Backside 360 Shuv-it
@@ -317,6 +324,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(_3SHUV_FS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.longButtonText}>
           frontside 360 shuv-it
@@ -324,6 +332,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(LASERFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Laser flip
@@ -371,11 +380,20 @@ _begin_TrickMenu(TrickMenu) {
                                  <VarialheelflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
                                  </View>,
       HARDFLIP_MENU: () => <View style={localStyles.outer}> 
-                                 <HardflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
-                                 </View>,
+                           <HardflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                           </View>,
+      _3SHUV_BS_MENU: () => <View style={localStyles.outer}> 
+                            <_3Shuv_bs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                            </View>,
       _360FLIP_MENU: () => <View style={localStyles.outer}>
                            <_360flipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
                            </View>,
+      _3SHUV_FS_MENU: () => <View style={localStyles.outer}> 
+                            <_3Shuv_fs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                            </View>,
+      LASERFLIP_MENU: () => <View style={localStyles.outer}> 
+                            <LaserflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                            </View>,
     }
     return menus[TrickMenu]()
   }
