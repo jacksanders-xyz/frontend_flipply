@@ -14,78 +14,67 @@ import {
   ViroARSceneNavigator,
 } from 'react-viro';
 //
-const POPSHUV_FS_MENU = "POPSHUV_FS__MENU";
-const POPSHUV_FS_INIT  = "POPSHUV_FS_INIT";
-const defaultNavigatorType = POPSHUV_FS_MENU;
-
 //
-
-
-
 export default class PopShuv_fs_Menu extends Component {
     constructor() {
       super();
-  
-      this.state = {
-        navigatorType : defaultNavigatorType,
-      }
     }
-    // The top level switch, that says "has a button been pressed? which one?" based on the
-    // state of navigatorType
+    
     render() {
-      if (this.state.navigatorType == POPSHUV_FS__MENU) {
         return this._displayPOPSHUV_FS_MENU();
-      } else if (this.state.navigatorType == POPSHUV_FS_INIT) {
-        return null 
-      }
     }
 
-
-    _displayPOPSHUV_FS_MENU() {
+  _displayPOPSHUV_FS_MENU() {
     return (
-        <View style={localStyles.flex}>
-          <View style={localStyles.topMenu}>
-          <TouchableOpacity 
-            style={localStyles.flex}
-            activeOpacity={.5} 
-            onPress={() => this.props._back_toMainTrickMenu()}
-         >
-          <Image 
-            style={localStyles.topMenu}
-            source={require('../archive/icon_left_w.png')}        
-          />
-          </TouchableOpacity>
-          </View>
-          <View style={localStyles.outer}>
-            <View style={localStyles.inner}>
-              <Text style={localStyles.titleText}>
-             Frontside pop shuv-it menu
-              </Text>
+        <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
+          <View style={{height: 1000}}>
+                <TouchableOpacity 
+                style={localStyles.buttonBox}
+                activeOpacity={.5} 
+                onPress={() => this.props._back_toMainTrickMenu()}
+                >
+                <Image 
+                style={localStyles.topMenu}
+                source={require('../archive/icon_left_w.png')}        
+                />
+                </TouchableOpacity>
+
+              <View style={localStyles.textFlex}>
+                <Text style={localStyles.titleText}>
+                FRONTSIDE Pop Shuv-its
+                </Text>
+
+                <Text style={localStyles.descriptiveText}>
+                how to do a frontside pop shuv it 
+                </Text>
+
+                <Text style={localStyles.descriptiveText}>
+
+
+                </Text>
+
+              </View>
 
               <TouchableHighlight style={localStyles.buttons}
               onPress={() => this.props._begin_TrickScene("POPSHUV_FS_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
-              AR Ollie
+             Pop Shuv-it frontside
               </Text>
               </TouchableHighlight>
-            </View>
           </View>
-        </View>
+        </ScrollView>
+
 
     )
-}
-
-  // This function "exits" Viro by setting the navigatorType to signInMenu.
-    _exitViro() {
-      this.setState({
-        navigatorType : signInMenu
-      })
-    }
   }
+}
   
   const localStyles = StyleSheet.create({
     flex : {
+      flex : 1,
+    },
+    scrollFlex : {
       flex : 1,
       backgroundColor: "black",
     },
@@ -102,14 +91,28 @@ export default class PopShuv_fs_Menu extends Component {
       flex : 1,
       flexDirection: 'column',
       alignItems:'center',
-      backgroundColor: "black",
+    },
+    textFlex : {
+      flex : 1,
+      justifyContent: 'center',
+      marginBottom: 0
     },
     titleText: {
-      paddingTop: 30,
+      paddingTop: 10,
       paddingBottom: 20,
+      fontFamily: 'Futura',
       color:'#fff',
       textAlign:'center',
-      fontSize : 25
+      fontSize : 32
+    },
+    descriptiveText: {
+      fontFamily: 'Futura',
+      flexWrap: 'wrap',
+      width: '90%',
+      margin: 10,
+      color:'#fff',
+      textAlign:'justify',
+      fontSize : 16
     },
     buttonText: {
       color:'#fff',
@@ -119,12 +122,11 @@ export default class PopShuv_fs_Menu extends Component {
     buttons : {
       height: 80,
       width: 150,
-      paddingTop:20,
-      paddingBottom:20,
-      marginTop: 10,
+      paddingTop: 20,
+      paddingBottom: 20,
       alignSelf: 'center',
-      marginBottom: 10,
-      backgroundColor:'#68a0cf',
+      marginBottom: 15,
+      backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#fff',
@@ -133,20 +135,25 @@ export default class PopShuv_fs_Menu extends Component {
       height: 50,
       width: 100,
       paddingTop:10,
-      paddingBottom:10,
+      paddingBottom:100,
       marginTop: 10,
-      marginBottom: 10,
       backgroundColor:'#68a0cf',
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#fff',
     },
     topMenu: {
-      height : '30%',
+      height : '50%',
       width : '40%',
-      marginTop: 10,
       top : 0,
     },
+    buttonBox: {
+      height : '5%',
+      width : '40%',
+      marginTop: 35,
+      marginBottom: 10,
+    },
   });
+
 module.exports = PopShuv_fs_Menu;
 

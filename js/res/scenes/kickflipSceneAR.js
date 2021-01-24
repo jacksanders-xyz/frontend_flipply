@@ -159,7 +159,7 @@ ViroAnimations.registerAnimations({
   },
   levelOut: {
     properties: {
-      rotateZ: "+=15", 
+      rotateZ: "+=10", 
       rotateX: "-=50",
       positionX: "-=0.3",
     },
@@ -167,7 +167,6 @@ ViroAnimations.registerAnimations({
   },
   land: {
     properties: {
-      rotateZ: "-=5", 
       positionY: "-=0.48",
       positionX: "-=0.3",
     },
@@ -175,7 +174,6 @@ ViroAnimations.registerAnimations({
   },
   rollAway: {
     properties: {
-      rotateZ: "+=5", 
       positionX: "-=0.4",
     },
     duration: 200,

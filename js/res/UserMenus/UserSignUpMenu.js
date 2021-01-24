@@ -25,7 +25,7 @@ import {
  
   // for the button:
   const handleSubmit = () => {
-    props.signUp_USER_()
+    props._userSignedIn()
   }
  const handleUsernameChange = (text) => setUsername(text.target.value);
  const handlePasswordChange = (text) => setPassword(text.target.value);
@@ -50,7 +50,7 @@ import {
         <TextInput style={localStyles.textInput} value={username} placeholder="Username" onChange={handleUsernameChange}/>
       </View>
       <View style={localStyles.formBox}>
-        <TextInput type="password" style={localStyles.textInput} value={password} placeholder="Password" onChange={handlePasswordChange}/>
+        <TextInput secureTextEntry={true}  style={localStyles.textInput} value={password} placeholder="Password" onChange={handlePasswordChange}/>
       </View>
     
     <View style={localStyles.outsidePickerBox}>
@@ -102,6 +102,7 @@ import {
    formBox: {
       flexDirection: 'row',
       alignItems:'center',
+      color:'white',
     },
     outsidePickerBox: {
       width: '95%',
@@ -110,7 +111,7 @@ import {
     },
     pickerBox: {
       flex: 1,
-      borderColor: 'gray',
+      borderColor: 'white',
       borderWidth: 1,
       borderWidth: 1,
       marginBottom: 10,
@@ -161,7 +162,7 @@ import {
     textInput: {
       flex: 1,
       color: '#fff',
-      borderColor: 'gray',
+      borderColor: 'white',
       borderWidth: 1,
       padding: 15,
       marginBottom: 10,

@@ -46,7 +46,7 @@ import {
         <TextInput style={localStyles.textInput} placeholder="Username" onChange={event => setUsername(event.target.value)}/>
       </View>
       <View style={localStyles.formBox}>
-        <TextInput style={localStyles.textInput} placeholder="Password" onChange={event => setPassword(event.target.value)}/>
+        <TextInput secureTextEntry={true} style={localStyles.textInput} placeholder="Password" onChange={event => setPassword(event.target.value)}/>
       </View>
         <TouchableHighlight style={localStyles.buttons}
         onPress={() => props._userSignedIn()}
@@ -81,6 +81,7 @@ import {
     formBox: {
       flexDirection: 'row',
       alignItems:'center',
+      color: 'white',
     },
     titleText: {
       paddingTop: 30,
@@ -128,7 +129,7 @@ import {
     textInput: {
       flex: 1,
       color: '#fff',
-      borderColor: 'gray',
+      borderColor: 'white',
       borderWidth: 1,
       padding: 15,
       marginBottom: 10,

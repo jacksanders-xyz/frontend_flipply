@@ -54,8 +54,8 @@ export default class KickflipMenu extends Component {
                 Front foot is up higher, the top of your foot should be touching the bottom right bolt (if you're goofy, bottom left if regular).
                 It should be angled and cocked towards the front lip ever so slightly.{"\n\n"}
                 1. Pop. {"\n\n"}
-                The back foot is the same as the ollie, it snaps straight down.
-                2. Front foot {"\n\n"}
+                The back foot is the same as the ollie, it snaps straight down.{"\n\n"}
+                2. Flick{"\n\n"}
                 As the front foot slides up, instead of leveling out like in the Ollie, your goal is to instead flick out at a sharp angle
                 directly after your pop and right before the apex of your upward movement. The back foot will also come up after its snap to meet you 
                 in leveling out (as in the Ollie). Your movement and direction should be basically the same but baking this flick into your nerves system

@@ -21,14 +21,17 @@ import {
 import UserSignInMenu from './js/res/UserMenus/UserSignInMenu';
 import UserSignUpMenu from './js/res/UserMenus/UserSignUpMenu';
 
-
-
 //TrickMenuComponents:
 import OllieMenu from './js/res/trickMenus/OllieMenu';
 import PopShuv_bs_Menu from './js/res/trickMenus/PopShuv_bs_Menu';
+import PopShuv_fs_Menu from './js/res/trickMenus/PopShuv_fs_Menu.js';
 import KickflipMenu from './js/res/trickMenus/KickflipMenu';
+import HeelflipMenu from './js/res/trickMenus/heelflipMenu';
+import VarialflipMenu from './js/res/trickMenus/varialflipMenu.js';
+import VarialheelflipMenu from './js/res/trickMenus/varial_heelflipMenu.js';
+import HardflipMenu from './js/res/trickMenus/hardflipMenu.js';
 import _360flipMenu from './js/res/trickMenus/_360flipMenu';
-
+ 
 // Urls
 const baseUrl = 'http://localhost:8000/'
 const usersUrl = `${baseUrl}users/` 
@@ -48,7 +51,12 @@ const defaultNavigatorType = mainUserHomepage
 // Trick menu Navigator State
 const OLLIE_MENU = "OLLIE_MENU";
 const POPSHUV_BS_MENU = "POPSHUV_BS_MENU";
+const POPSHUV_FS_MENU = "POPSHUV_FS_MENU";
 const KICKFLIP_MENU = "KICKFLIP_MENU";
+const HEELFLIP_MENU = "HEELFLIP_MENU";
+const VARIALFLIP_MENU = "VARIALFLIP_MENU";
+const VARIALHEELFLIP_MENU = "VARIALHEELFLIP_MENU";
+const HARDFLIP_MENU = "HARDFLIP_MENU";
 const _360FLIP_MENU = "_360FLIP_MENU";
 const defaultTrickMenu = ''
 // _360FLIP_MENU
@@ -237,14 +245,13 @@ export default class ViroSample extends Component {
           </Text>
           </TouchableHighlight>
 
-
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(POPSHUV_FS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.longButtonText}>
           frontside {"\n"}Pop shuv-it
           </Text>
           </TouchableHighlight>
-
 
           <Text style={localStyles.titleText}>
           Intermediate:
@@ -258,8 +265,8 @@ export default class ViroSample extends Component {
           </Text>
           </TouchableHighlight>
 
-
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(HEELFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Heelflip 
@@ -267,6 +274,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(VARIALFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Varial flip
@@ -274,6 +282,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(VARIALHEELFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Varial Heel
@@ -281,6 +290,7 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight style={localStyles.buttons}
+          onPress={this._begin_TrickMenu(HARDFLIP_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.buttonText}>
           Hard flip
@@ -336,35 +346,38 @@ _begin_TrickMenu(TrickMenu) {
       })
     } 
   }
-
+   VARIALFLIP_MENU 
   _init_TrickMenu(TrickMenu) { 
-    if (TrickMenu == OLLIE_MENU) { 
-      return (
-      <View style={localStyles.outer}>
-      <OllieMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
-      </View>
-      );
-    } else if (TrickMenu == POPSHUV_BS_MENU) {
-      return (
-      <View style={localStyles.outer}>
-      <PopShuv_bs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
-      </View>
-      );
-    } else if (TrickMenu == KICKFLIP_MENU ) {
-      return (
-      <View style={localStyles.outer}>
-      <KickflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
-      </View>
-      );
-    } else if (TrickMenu == _360FLIP_MENU ) {
-      return (
-      <View style={localStyles.outer}>
-      <_360flipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
-      </View>
-      );
+    menus = {
+      OLLIE_MENU: () => <View style={localStyles.outer}> 
+                        <OllieMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                        </View>,
+      POPSHUV_BS_MENU: () => <View style={localStyles.outer}> 
+                             <PopShuv_bs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                             </View>,
+      POPSHUV_FS_MENU: () => <View style={localStyles.outer}> 
+                             <PopShuv_fs_Menu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                             </View>,
+      KICKFLIP_MENU: () => <View style={localStyles.outer}> 
+                           <KickflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                           </View>,
+      HEELFLIP_MENU: () => <View style={localStyles.outer}> 
+                           <HeelflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                           </View>,
+      VARIALFLIP_MENU: () => <View style={localStyles.outer}> 
+                             <VarialflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                             </View>,
+      VARIALHEELFLIP_MENU: () => <View style={localStyles.outer}> 
+                                 <VarialheelflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                                 </View>,
+      HARDFLIP_MENU: () => <View style={localStyles.outer}> 
+                                 <HardflipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                                 </View>,
+      _360FLIP_MENU: () => <View style={localStyles.outer}>
+                           <_360flipMenu _back_toMainTrickMenu={this._back_toMainTrickMenu()} _begin_TrickScene={this._begin_TrickScene()} />
+                           </View>,
     }
-
-
+    return menus[TrickMenu]()
   }
 
   _begin_TrickScene(TrickScene) {
@@ -418,13 +431,6 @@ _init_TrickScene(TrickScene) {
 
 
   }
-
-
-  
-
-
-
-
 
   _back_toTricksMenu() {
     return () => {

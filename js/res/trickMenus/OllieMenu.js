@@ -65,9 +65,10 @@
                 3.Level Out{"\n\n"}
                 You have been going upwards until this moment, but you're now at the top of your Ollie 
                 (When your front foot has slide all the way to the top your board should be greater than 45 degrees)... At this moment
-                your back foot shoould be coming up as your front foot kicks forward to level out the skateboard in mid air. 
+                your back foot should be coming up as your front foot kicks forward to level out the skateboard in mid air.{"\n\n"} 
                 4. Bend your knees and get ready for impact! {"\n\n"}
-                Click below to see the Ollie in Augmented reality! 
+                Click below to see the Ollie in Augmented reality! {"\n\n"} 
+
                 </Text>
 
               </View>
