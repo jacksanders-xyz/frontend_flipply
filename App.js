@@ -204,14 +204,11 @@ export default class ViroSample extends Component {
         .then(this._userSignedIn())
   }
   
-
-
   _init_UserSignUp_MENU() {
     return (
         <UserSignUpMenu signUp_USER_={this.signUp_USER_} _userSignedIn={this._userSignedIn()} _back_toMainMenu={() => this.setState({ topNavigatorType: defaultNavigatorType}) }/>
     ) 
   }
-
 
   _userSignedIn() {
     return () => {
@@ -219,7 +216,6 @@ export default class ViroSample extends Component {
     }
   }
 
-// THE MAIN MENU, (returns js for the main menu) 
   _trickMenuSelector() {
     return (
       <ImageBackground source={Image2} style={localStyles.backImage} imageStyle={{ opacity: 0.7 }}>
@@ -408,47 +404,36 @@ _begin_TrickMenu(TrickMenu) {
   }
 
 _init_TrickScene(TrickScene) {
-    if (TrickScene == "OLLIE_SCENE") {
-      const Ollie_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
-      return (
-        <View style={localStyles.flex}>
-        <StatusBar hidden={false}/>
-        <ViroARSceneNavigator initialScene={{scene: Ollie_trick_SCENE}} />
-        {this._backARROW_scene()}
-        </View>
-      );
-    } else if (TrickScene == "POPSHUV_BS_SCENE") {
-      const PopShuv_bs_trick_SCENE = require('./js/res/scenes/PopShuv_bs_SceneAR');
-      return (
-        <View style={localStyles.flex}>
-        <StatusBar hidden={false}/>
-        <ViroARSceneNavigator initialScene={{scene: PopShuv_bs_trick_SCENE}} />
-        {this._backARROW_scene()}
-        </View>
-      );
-    } else if (TrickScene == "KICKFLIP_SCENE") {
-      const kickflipSceneAR = require('./js/res/scenes/kickflipSceneAR');
-      return (
-        <View style={localStyles.flex}>
-        <StatusBar hidden={false}/>
-        <ViroARSceneNavigator initialScene={{scene: kickflipSceneAR}} />
-        {this._backARROW_scene()}
-        </View>
-      );
-    } else if (TrickScene == "_360FLIP_SCENE") {
-      const _360flipSceneAR = require('./js/res/scenes/_360flipSceneAR');
-      return (
-        <View style={localStyles.flex}>
-        <StatusBar hidden={false}/>
-        <ViroARSceneNavigator initialScene={{scene: _360flipSceneAR}} />
-        {this._backARROW_scene()}
-        </View>
-      );
-    }
-
-
-
+  TrickSceneSelectorDispatch = {
+    OLLIE_SCENE: () =>  { const Ollie_trick_SCENE = require('./js/res/scenes/ollieSceneAR');
+                          return (<View style={localStyles.flex}>
+                          <StatusBar hidden={false}/>
+                          <ViroARSceneNavigator initialScene={{scene: Ollie_trick_SCENE}} />
+                          {this._backARROW_scene()}
+                          </View>); },
+    POPSHUV_BS_SCENE: () => { const PopShuv_bs_trick_SCENE = require('./js/res/scenes/PopShuv_bs_SceneAR');
+                              return (<View style={localStyles.flex}>
+                              <StatusBar hidden={false}/>
+                              <ViroARSceneNavigator initialScene={{scene: PopShuv_bs_trick_SCENE}} />
+                              {this._backARROW_scene()}
+                              </View>); },
+    KICKFLIP_SCENE: () => { const kickflipSceneAR = require('./js/res/scenes/kickflipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: kickflipSceneAR}} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    _360FLIP_SCENE: () => { const _360flipSceneAR = require('./js/res/scenes/_360flipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: _360flipSceneAR}} />
+                            {this._backARROW_scene()}
+                            </View>); },
+            }
+    return TrickSceneSelectorDispatch[TrickScene]()
   }
+
+
 
   _back_toTricksMenu() {
     return () => {
