@@ -21,7 +21,7 @@ import {
 } from 'react-viro';
 
 
-export default class popShuv-it_fs_SceneAR extends Component {
+export default class _3Shuv_bs_SceneAR extends Component {
   
   constructor() {
     super();
@@ -85,22 +85,6 @@ trickStateManager = () => {
 
 }
 
-
-
-
-  // _onInitialized handles TRACKING 
-  //
-  //
-  // THIS IS FUNCTION will be triggered when everything is good to go! 
-  // It manages when things are setting up
-  // you pass it into the <ViroARScene> tag, it is the onTrackingUpdated attribute
-  // 
-  // all your jsx have access to this!!!!
-  // so if you make inner components, you give them the state of whether or not you're tracking
-  // or not, and can even give a function to handle if shit goes crayz (else if) 
-  // When everything is the steady and ready to render it sets the STATE of text
-  // to "jack".... your text jsx component then grabs it!
- 
 _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
@@ -136,6 +120,7 @@ ViroAnimations.registerAnimations({
   prePop: {
     properties: {
       rotateZ: "-=45",
+      rotateY: "+=20",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
@@ -144,6 +129,7 @@ ViroAnimations.registerAnimations({
   pop: {
     properties: {
       rotateZ: "-=5",
+      rotateY: "+=120",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
@@ -152,6 +138,7 @@ ViroAnimations.registerAnimations({
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateY: "+=115",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -159,6 +146,7 @@ ViroAnimations.registerAnimations({
   levelOut: {
     properties: {
       rotateZ: "+=15", 
+      rotateY: "+=105",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -181,5 +169,4 @@ ViroAnimations.registerAnimations({
 });
 
 
-
-module.exports = popShuv-it_fs_SceneAR;
+module.exports = _3Shuv_bs_SceneAR;

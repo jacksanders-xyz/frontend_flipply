@@ -131,55 +131,58 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   prePop: {
     properties: {
       rotateZ: "-=45",
+      rotateY: "-=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   pop: {
     properties: {
-      rotateZ: "-=5",
+      rotateX: "-=150",
+      rotateY: "-=45",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 300,
   },
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateY: "-=45",
+      rotateX: "-=150",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   levelOut: {
     properties: {
-      rotateZ: "+=15", 
+      rotateY: "-=45",
+      rotateZ: "+=10", 
+      rotateX: "-=60",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   land: {
     properties: {
-      rotateZ: "-=5", 
       positionY: "-=0.48",
-      positionX: "-=0.4",
+      positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   rollAway: {
     properties: {
-      rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
 });
-
 
 
 module.exports = hardflipSceneAR;

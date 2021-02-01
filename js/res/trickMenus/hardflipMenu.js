@@ -70,7 +70,7 @@ export default class HardflipMenu extends Component {
               </View>
 
               <TouchableHighlight style={localStyles.buttons}
-              onPress={() => this.props._begin_TrickScene("HEELFLIP_SCENE")}
+              onPress={() => this.props._begin_TrickScene("HARDFLIP_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
               kickflip

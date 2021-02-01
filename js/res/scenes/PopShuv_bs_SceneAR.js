@@ -119,7 +119,7 @@ ViroAnimations.registerAnimations({
   prePop: {
     properties: {
       rotateZ: "-=45",
-      rotateY: "-=45",
+      rotateY: "+=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
@@ -128,7 +128,7 @@ ViroAnimations.registerAnimations({
   pop: {
     properties: {
       rotateZ: "-=5",
-      rotateY: "-=45",
+      rotateY: "+=45",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
@@ -137,7 +137,7 @@ ViroAnimations.registerAnimations({
   postPop: {
     properties: {
       rotateZ: "+=35", 
-      rotateY: "-=45",
+      rotateY: "+=45",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds
@@ -145,7 +145,7 @@ ViroAnimations.registerAnimations({
   levelOut: {
     properties: {
       rotateZ: "+=15", 
-      rotateY: "-=45",
+      rotateY: "+=45",
       positionX: "-=0.3",
     },
     duration: 200, //.5 seconds

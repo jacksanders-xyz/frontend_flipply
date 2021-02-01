@@ -70,7 +70,7 @@ export default class _3Shuv_bs_Menu extends Component {
               </View>
 
               <TouchableHighlight style={localStyles.buttons}
-              onPress={() => this.props._begin_TrickScene("HEELFLIP_SCENE")}
+              onPress={() => this.props._begin_TrickScene("_3SHUV_BS_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
               kickflip

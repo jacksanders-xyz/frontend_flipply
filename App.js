@@ -49,7 +49,7 @@ const signUpMenu = "signUpMenu";
 const trickMenu = "trickMenu";
 const trick_menu_nav = "A Tricks Menu Is on"  
 const trick_scene_nav = "A Trick Scene Is happening"  
-const defaultNavigatorType = mainUserHomepage
+const defaultNavigatorType = trickMenu 
 // trick_scene_nav
 // Trick menu Navigator State
 const OLLIE_MENU = "OLLIE_MENU";
@@ -417,10 +417,46 @@ _init_TrickScene(TrickScene) {
                               <ViroARSceneNavigator initialScene={{scene: PopShuv_bs_trick_SCENE}} />
                               {this._backARROW_scene()}
                               </View>); },
+    POPSHUV_FS_SCENE: () => { const PopShuv_fs_trick_SCENE = require('./js/res/scenes/PopShuv_fs_SceneAR.js');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: PopShuv_fs_trick_SCENE}} />
+                            {this._backARROW_scene()}
+                            </View>); },
     KICKFLIP_SCENE: () => { const kickflipSceneAR = require('./js/res/scenes/kickflipSceneAR');
                             return (<View style={localStyles.flex}>
                             <StatusBar hidden={false}/>
                             <ViroARSceneNavigator initialScene={{scene: kickflipSceneAR}} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    HEELFLIP_SCENE: () => { const heelflipSceneAR = require('./js/res/scenes/heelflipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: heelflipSceneAR }} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    VARIALFLIP_SCENE: () => { const varialflipSceneAR = require('./js/res/scenes/varialflipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: varialflipSceneAR }} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    VARIALHEELFLIP_SCENE: () => { const varialheelflipSceneAR = require('./js/res/scenes/varial_heelflipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: varialheelflipSceneAR }} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    HARDFLIP_SCENE: () => { const hardflipSceneAR = require('./js/res/scenes/hardflipSceneAR.js');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: hardflipSceneAR }} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    _3SHUV_BS_SCENE: () => { const _3Shuv_bs_SceneAR = require('./js/res/scenes/_3Shuv_bs_SceneAR.js');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: _3Shuv_bs_SceneAR }} />
                             {this._backARROW_scene()}
                             </View>); },
     _360FLIP_SCENE: () => { const _360flipSceneAR = require('./js/res/scenes/_360flipSceneAR');

@@ -84,23 +84,6 @@ trickStateManager = () => {
     } 
 
 }
-
-
-
-
-  // _onInitialized handles TRACKING 
-  //
-  //
-  // THIS IS FUNCTION will be triggered when everything is good to go! 
-  // It manages when things are setting up
-  // you pass it into the <ViroARScene> tag, it is the onTrackingUpdated attribute
-  // 
-  // all your jsx have access to this!!!!
-  // so if you make inner components, you give them the state of whether or not you're tracking
-  // or not, and can even give a function to handle if shit goes crayz (else if) 
-  // When everything is the steady and ready to render it sets the STATE of text
-  // to "jack".... your text jsx component then grabs it!
- 
 _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
@@ -131,55 +114,58 @@ ViroAnimations.registerAnimations({
     properties: {
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   prePop: {
     properties: {
       rotateZ: "-=45",
+      rotateY: "-=45",
       positionY: "+=0.18",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   pop: {
     properties: {
-      rotateZ: "-=5",
+      rotateX: "+=150",
+      rotateY: "-=45",
       positionY: "+=0.3",
       positionX: "-=0.1",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   postPop: {
     properties: {
       rotateZ: "+=35", 
+      rotateY: "-=45",
+      rotateX: "+=150",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   levelOut: {
     properties: {
-      rotateZ: "+=15", 
+      rotateY: "-=45",
+      rotateZ: "+=10", 
+      rotateX: "+=60",
       positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   land: {
     properties: {
-      rotateZ: "-=5", 
       positionY: "-=0.48",
-      positionX: "-=0.4",
+      positionX: "-=0.3",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
   rollAway: {
     properties: {
-      rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+    duration: 200,
   },
 });
-
 
 
 module.exports = varial_heelflipSceneAR;
