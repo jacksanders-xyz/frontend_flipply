@@ -75,3 +75,4 @@ test/ios/fastlane/README.md
 test/android/fastlane/README.md
 test/android/fastlane/report.xml
 node_modules/
+yarn.lock/
