@@ -138,7 +138,6 @@ ViroAnimations.registerAnimations({
       positionY: "+=0.2",
       positionX: "-=0.05",
       positionZ: "-=0.06"
-
     },
     duration: 200, //.5 seconds
   },

@@ -465,6 +465,18 @@ _init_TrickScene(TrickScene) {
                             <ViroARSceneNavigator initialScene={{scene: _360flipSceneAR}} />
                             {this._backARROW_scene()}
                             </View>); },
+    _3SHUV_FS_SCENE: () => { const _3Shuv_fs_SceneAR = require('./js/res/scenes/_3Shuv_fs_SceneAR.js');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: _3Shuv_fs_SceneAR }} />
+                            {this._backARROW_scene()}
+                            </View>); },
+    LASERFLIP_SCENE: () => { const laserflipSceneAR = require('./js/res/scenes/laserflipSceneAR');
+                            return (<View style={localStyles.flex}>
+                            <StatusBar hidden={false}/>
+                            <ViroARSceneNavigator initialScene={{scene: laserflipSceneAR}} />
+                            {this._backARROW_scene()}
+                            </View>); },
             }
     return TrickSceneSelectorDispatch[TrickScene]()
   }

@@ -85,22 +85,6 @@ trickStateManager = () => {
 
 }
 
-
-
-
-  // _onInitialized handles TRACKING 
-  //
-  //
-  // THIS IS FUNCTION will be triggered when everything is good to go! 
-  // It manages when things are setting up
-  // you pass it into the <ViroARScene> tag, it is the onTrackingUpdated attribute
-  // 
-  // all your jsx have access to this!!!!
-  // so if you make inner components, you give them the state of whether or not you're tracking
-  // or not, and can even give a function to handle if shit goes crayz (else if) 
-  // When everything is the steady and ready to render it sets the STATE of text
-  // to "jack".... your text jsx component then grabs it!
- 
 _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
@@ -129,56 +113,69 @@ const styles = StyleSheet.create({
 ViroAnimations.registerAnimations({
   roll: {
     properties: {
-      positionX: "-=0.3",
+      positionX: "-=0.40",
     },
-    duration: 200, //.5 seconds
+    duration: 400, //.5 seconds
   },
   prePop: {
     properties: {
-      rotateZ: "-=45",
-      positionY: "+=0.18",
-      positionX: "-=0.1",
+      rotateZ: "-=75",
+      rotateY: "-=60",
+      rotateX: "+=40",
+      positionY: "+=0.15",
+      positionX: "-=0.05",
+      positionZ: "-=0.04"
     },
     duration: 200, //.5 seconds
   },
   pop: {
     properties: {
-      rotateZ: "-=5",
-      positionY: "+=0.3",
-      positionX: "-=0.1",
+      rotateZ: "+=80",
+      rotateY: "-=80",
+      rotateX: "+=100",
+      positionY: "+=0.2",
+      positionX: "-=0.05",
+      positionZ: "-=0.06"
     },
     duration: 200, //.5 seconds
   },
   postPop: {
     properties: {
-      rotateZ: "+=35", 
-      positionX: "-=0.3",
+      rotateZ: "-=15",
+      rotateY: "-=80",
+      rotateX: "+=80",
+      positionY: "+=0.08",
+      positionX: "-=0.26",
     },
     duration: 200, //.5 seconds
   },
   levelOut: {
     properties: {
-      rotateZ: "+=15", 
-      positionX: "-=0.3",
+      rotateZ: "+=10",
+      rotateY: "-=75",
+      rotateX: "+=70",
+      positionX: "-=0.16",
+      positionY: "-=0.09",
     },
     duration: 200, //.5 seconds
   },
   land: {
     properties: {
-      rotateZ: "-=5", 
-      positionY: "-=0.48",
-      positionX: "-=0.4",
+      rotateY: "-=65",
+      rotateX: "+=70",
+      positionY: "-=0.34",
+      positionX: "-=0.18",
     },
     duration: 200, //.5 seconds
   },
   rollAway: {
     properties: {
-      rotateZ: "+=5", 
       positionX: "-=0.4",
     },
-    duration: 200, //.5 seconds
+      duration: 400, //.5 seconds
   },
 });
+
 
 
 
