@@ -50,10 +50,10 @@
                 that much smoother. If you can only learn ONE skateboard trick, The Ollie is the one to go with! You can ollie up stuff, down stuff, through stuff
                 into stuff, out of stuff, over stuff... The possibilities are endless and you will NEVER get tired of it. Your favorite skaters have mature, well refined
                 Ollies and STILL have fun (and most importantly LOOK COOL) doing a simple Ollie over things. 
-                {"\n\n"}
-                Foot position, back foot is right in the curve of the tail with your weight focused on your toes and your front foot is about 3/4 
+                {"\n\n"} Foot position: 
+                back foot is right in the curve of the tail with your weight focused on your toes and your front foot is about 3/4 
                 of the way up the board.{"\n"}
-                Test steps:{"\n\n"}
+                Trick steps:{"\n\n"}
                 1. Pop the tail {"\n\n"}
                 Slam the back tail against the ground, even though this sounds simple, it is a movement you will need to practice over and over again.
                 At first you will accomplish this by just pushing your back foot down hard, almost jumping off your back foot. As it becomes 
@@ -138,7 +138,7 @@
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

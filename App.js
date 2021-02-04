@@ -242,8 +242,8 @@ export default class ViroSample extends Component {
           <TouchableHighlight style={localStyles.buttons}
           onPress={this._begin_TrickMenu(POPSHUV_BS_MENU)}
           underlayColor={'#68a0ff'} >
-          <Text style={localStyles.buttonText}>
-          Pop shuv-it
+          <Text style={localStyles.longButtonText}>
+          backside{"\n"}pop shuv-it
           </Text>
           </TouchableHighlight>
 
