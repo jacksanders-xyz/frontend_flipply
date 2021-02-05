@@ -41,25 +41,21 @@ export default class _3Shuv_bs_Menu extends Component {
 
               <View style={localStyles.textFlex}>
                 <Text style={localStyles.titleText}>
-                Backside 3Shuv menu, write some shit about backside 3 shuvs now
+                Backside 3Shuv 
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                Perhaps one of the most famous and well recognozed tricks, the kickflip is a milestone for every skater. You measure your skating as
-                "pre-kickflip" and "post-kickflip". Perhaps it is the reason you got into skating in the first place, it is for many.{"\n\n"}
-                What is it? {"\n\n"}
-                The kick flip is an Ollie, plus a 360 degree rotatation about the lengthwise axis of the board.{"\n\n"}
+                A 360 degree Pop Shuv-it
+                {"\n\n"}
+                To be honest, I've only done a few of these...I think that the 360 flip is actually easier...{"\n\n"}
                 FOOT POSITION:{"\n\n"}
-                Back foot is the same as the Ollie, in the curve of the tail and ready to pop in such a way that the foot snaps down{"\n\n"}
-                Front foot is up higher, the top of your foot should be touching the bottom right bolt (if you're goofy, bottom left if regular).
-                It should be angled and cocked towards the front lip ever so slightly.{"\n\n"}
+                Back foot same as a backside Pop Shuv-it but more "toe" if that makes sense{"\n\n"}
+                Front foot is a bit lower and cocked in than the standerd backside Pop Shuv-it but same general area
+                {"\n\n"}
                 1. Pop. {"\n\n"}
-                The back foot is the same as the ollie, it snaps straight down.{"\n\n"}
+                The back foot is the sam except scoop and flick as hard as you can{"\n\n"}
                 2. Flick{"\n\n"}
-                As the front foot slides up, instead of leveling out like in the Ollie, your goal is to instead flick out at a sharp angle
-                directly after your pop and right before the apex of your upward movement. The back foot will also come up after its snap to meet you 
-                in leveling out (as in the Ollie). Your movement and direction should be basically the same but baking this flick into your nerves system
-                is the hard part. In the begining it will fell Unnaturall and even weird....{"\n\n"}
+                what flick... front foot is fulcrum... preventing the board to flip like a kickflip
                 3.Landing {"\n\n"}
                 You have to commit and trust that the board will be there when you go to land! This confidence will only grow with time but in the meantime 
                 get ready to land 'primo' once or twice before you get the hang of it.{"\n\n"}
