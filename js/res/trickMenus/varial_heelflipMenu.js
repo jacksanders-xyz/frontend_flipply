@@ -41,25 +41,23 @@ export default class VarialheelflipMenu extends Component {
 
               <View style={localStyles.textFlex}>
                 <Text style={localStyles.titleText}>
-                Varial Heelflip, write some shit about varialheelflips now
+               Varial heelflips
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                Perhaps one of the most famous and well recognozed tricks, the kickflip is a milestone for every skater. You measure your skating as
-                "pre-kickflip" and "post-kickflip". Perhaps it is the reason you got into skating in the first place, it is for many.{"\n\n"}
+                {"\n\n"}
                 What is it? {"\n\n"}
-                The kick flip is an Ollie, plus a 360 degree rotatation about the lengthwise axis of the board.{"\n\n"}
+                A kickflip plus a backside Pop Shuv-it
+                {"\n\n"}PRE-REQUISITES:{"\n\n"} An Ollie. A frontside pop shuv
+                it, a heelflip.
+                {"\n\n"}
                 FOOT POSITION:{"\n\n"}
-                Back foot is the same as the Ollie, in the curve of the tail and ready to pop in such a way that the foot snaps down{"\n\n"}
-                Front foot is up higher, the top of your foot should be touching the bottom right bolt (if you're goofy, bottom left if regular).
-                It should be angled and cocked towards the front lip ever so slightly.{"\n\n"}
+                Back foot is the same as the frontside Pop Shuv-it. on the part of the curve closest to you, toes hangin off{"\n\n"}
+                Front foot is in standard heelflip spot {"\n\n"}
                 1. Pop. {"\n\n"}
-                The back foot is the same as the ollie, it snaps straight down.{"\n\n"}
+                Back foot is the same as a frontside Pop shuv it, on the part of the curve closest to you{"\n\n"}
                 2. Flick{"\n\n"}
-                As the front foot slides up, instead of leveling out like in the Ollie, your goal is to instead flick out at a sharp angle
-                directly after your pop and right before the apex of your upward movement. The back foot will also come up after its snap to meet you 
-                in leveling out (as in the Ollie). Your movement and direction should be basically the same but baking this flick into your nerves system
-                is the hard part. In the begining it will fell Unnaturall and even weird....{"\n\n"}
+                front foot is the same as the heelflip. The trick is doing them both at the same time and finding the perfect angle/compromise between the two...(think more heelflip) 
                 3.Landing {"\n\n"}
                 You have to commit and trust that the board will be there when you go to land! This confidence will only grow with time but in the meantime 
                 get ready to land 'primo' once or twice before you get the hang of it.{"\n\n"}
@@ -73,7 +71,7 @@ export default class VarialheelflipMenu extends Component {
               onPress={() => this.props._begin_TrickScene("VARIALHEELFLIP_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
-              kickflip
+              varial heelflip
               </Text>
               </TouchableHighlight>
           </View>

@@ -48,7 +48,12 @@ export default class KickflipMenu extends Component {
                 Perhaps one of the most famous and well recognozed tricks, the kickflip is a milestone for every skater. You measure your skating as
                 "pre-kickflip" and "post-kickflip". Perhaps it is the reason you got into skating in the first place, it is for many.{"\n\n"}
                 What is it? {"\n\n"}
-                The kick flip is an Ollie, plus a 360 degree rotatation about the lengthwise axis of the board.{"\n\n"}
+                The kick flip is an Ollie, plus a 360 degree rotatation about the
+                lengthwise axis of the board.
+                {"\n\n"}PRE-REQUISITES:{"\n\n"} An Ollie. A backside pop shuv
+                it/frontside Shuv-it might help as you will be generally better at
+                riding a skateboard but everyone is different. 
+                {"\n\n"}
                 FOOT POSITION:{"\n\n"}
                 Back foot is the same as the Ollie, in the curve of the tail and ready to pop in such a way that the foot snaps down{"\n\n"}
                 Front foot is up higher, the top of your foot should be touching the bottom right bolt (if you're goofy, bottom left if regular).

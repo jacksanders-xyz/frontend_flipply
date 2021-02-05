@@ -45,14 +45,10 @@ export default class PopShuv_fs_Menu extends Component {
                 </Text>
 
                 <Text style={localStyles.descriptiveText}> A more flavorful pop shuv it
-                {"\n\n"}PRE-REQUISITES:{"\n\n"} An Ollie, A backside pop shuv it,
-                and a frontside 180 might help. (again these are suggestions, if
                 you're feelin it, go for it! 
                 {"\n\n"}
                 STEPS: 
                 {"\n\n"} Foot position: 
-                
-
                 front foot is about where it was for the backside version except a little bit further back from the bolts, and a bit straighter.
                 The top of your back foot is at about the apex of the curve in the tail, The majority of your foot that is on the tail is on the inner part of the board. 
                 {"\n"}
