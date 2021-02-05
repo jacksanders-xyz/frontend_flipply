@@ -27,7 +27,7 @@ export default class _3Shuv_bs_Menu extends Component {
   _display3SHUV_BS_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 1300}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -46,7 +46,6 @@ export default class _3Shuv_bs_Menu extends Component {
 
                 <Text style={localStyles.descriptiveText}>
                 A 360 degree Pop Shuv-it
-                {"\n\n"}
                 To be honest, I've only done a few of these...I think that the 360 flip is actually easier...{"\n\n"}
                 FOOT POSITION:{"\n\n"}
                 Back foot same as a backside Pop Shuv-it but more "toe" if that makes sense{"\n\n"}
@@ -130,7 +129,7 @@ export default class _3Shuv_bs_Menu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

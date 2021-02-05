@@ -27,7 +27,7 @@ export default class VarialflipMenu extends Component {
   _displayVARIALFLIP_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 1500}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -45,7 +45,6 @@ export default class VarialflipMenu extends Component {
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                {"\n\n"}
                 What is it? {"\n\n"}
                 A kickflip plus a backside Pop Shuv-it
                 {"\n\n"}PRE-REQUISITES:{"\n\n"} An Ollie. A backside pop shuv
@@ -133,7 +132,7 @@ export default class VarialflipMenu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

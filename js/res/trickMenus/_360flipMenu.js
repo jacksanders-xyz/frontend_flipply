@@ -143,7 +143,7 @@ export default class _360flipMenu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

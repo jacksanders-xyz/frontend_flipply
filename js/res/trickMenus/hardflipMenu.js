@@ -27,7 +27,7 @@ export default class HardflipMenu extends Component {
   _displayHARDFLIP_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 1450}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -45,7 +45,6 @@ export default class HardflipMenu extends Component {
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                {"\n\n"}
                 They're not hard they're just weird
                 {"\n\n"}
                 A kickflip plus a frontside Pop Shuv-it
@@ -133,7 +132,7 @@ export default class HardflipMenu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

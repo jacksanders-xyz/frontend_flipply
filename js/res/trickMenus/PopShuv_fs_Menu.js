@@ -27,7 +27,7 @@ export default class PopShuv_fs_Menu extends Component {
   _displayPOPSHUV_FS_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 1800}}>
               <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 

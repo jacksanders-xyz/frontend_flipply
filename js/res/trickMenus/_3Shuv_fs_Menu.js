@@ -27,7 +27,7 @@ export default class _3Shuv_fs_Menu extends Component {
   _display3SHUV_FS_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 400}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -45,7 +45,7 @@ export default class _3Shuv_fs_Menu extends Component {
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                To be honest, I cannot do this trick, so I am not gonna pretend to offer advice. But I can render it in AR!
+                To be honest, I cannot do this trick...I have never done this trick so I am not gonna pretend to offer advice. But I can render it in AR!
                 </Text>
 
               </View>
@@ -115,7 +115,7 @@ export default class _3Shuv_fs_Menu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',

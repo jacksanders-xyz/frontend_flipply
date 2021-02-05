@@ -99,21 +99,35 @@ export default class ViroSample extends Component {
 
   }
   render() {
-    if (this.state.topNavigatorType == mainUserHomepage) {
-      return this._userSignInMenu();
-    } else if ( this.state.topNavigatorType == signInMenu) {
-      return this._init_UserSignIn_MENU();
-    } else if ( this.state.topNavigatorType == signUpMenu) {
-      return this._init_UserSignUp_MENU();
-    } else if (this.state.topNavigatorType == trickMenu) {
-      return this._trickMenuSelector();
-    } else if (this.state.topNavigatorType == trick_menu_nav) {
-      return this._init_TrickMenu(this.state.lastClickedTrickMenu);
-    } else if (this.state.topNavigatorType == trick_scene_nav) {
-       return this._init_TrickScene(this.state.lastClickedTrickScene);
+    switch(this.state.topNavigatorType) {
+      case mainUserHomepage:
+        return this._userSignInMenu();
+      case signInMenu:
+        return this._init_UserSignIn_MENU();
+      case signUpMenu:
+        return this._init_UserSignUp_MENU();
+      case trickMenu:
+        return this._trickMenuSelector();
+      case trick_menu_nav:
+        return this._init_TrickMenu(this.state.lastClickedTrickMenu);
+      case trick_scene_nav:
+        return this._init_TrickScene(this.state.lastClickedTrickScene);
     }
 }
   
+    // if (this.state.topNavigatorType == mainUserHomepage) {
+      // return this._userSignInMenu();
+    // } else if ( this.state.topNavigatorType == signInMenu) {
+    // return this._init_UserSignIn_MENU();
+    // } else if ( this.state.topNavigatorType == signUpMenu) {
+    // return this._init_UserSignUp_MENU();
+    // } else if (this.state.topNavigatorType == trickMenu) {
+    // return this._trickMenuSelector();
+    // } else if (this.state.topNavigatorType == trick_menu_nav) {
+      // return this._init_TrickMenu(this.state.lastClickedTrickMenu);
+    // } else if (this.state.topNavigatorType == trick_scene_nav) {
+       // return this._init_TrickScene(this.state.lastClickedTrickScene);
+    // }
 
 
   _userSignInMenu() {
@@ -228,7 +242,7 @@ export default class ViroSample extends Component {
           </Text>
 
           <Text style={localStyles.titleText}>
-          Beginner:
+          Beginner
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
@@ -251,12 +265,12 @@ export default class ViroSample extends Component {
           onPress={this._begin_TrickMenu(POPSHUV_FS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.longButtonText}>
-          frontside {"\n"}Pop shuv-it
+          frontside {"\n"}pop shuv-it
           </Text>
           </TouchableHighlight>
 
           <Text style={localStyles.titleText}>
-          Intermediate:
+          Intermediate
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
@@ -300,14 +314,14 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
 
           <Text style={localStyles.titleText}>
-          Advanced:
+          Advanced
           </Text>
 
           <TouchableHighlight style={localStyles.buttons}
           onPress={this._begin_TrickMenu(_3SHUV_BS_MENU)}
           underlayColor={'#68a0ff'} >
           <Text style={localStyles.longButtonText}>
-          Backside 360 Shuv-it
+          backside 360 Shuv-it
           </Text>
           </TouchableHighlight>
 

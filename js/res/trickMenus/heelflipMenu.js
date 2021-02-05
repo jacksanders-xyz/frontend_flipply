@@ -27,7 +27,7 @@ export default class HeelflipMenu extends Component {
   _displayHEELFLIP_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 2000}}>
+          <View style={{height: 1950}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -46,7 +46,7 @@ export default class HeelflipMenu extends Component {
 
                 <Text style={localStyles.descriptiveText}>
                 For some (like myself), the heelflip feels more natural than the
-                kickflip {"\n\n"} {"\n\n"} The heelflip is an Ollie, plus a 360
+                kickflip {"\n\n"} The heelflip is an Ollie, plus a 360
                 degree rotatation about the lengthwise axis of the board, away from
                 you, in the opposite direction of the kickflip.{"\n\n"}
                 {"\n\n"}PRE-REQUISITES:{"\n\n"} Same as the kickflip....An Ollie.
@@ -141,11 +141,12 @@ export default class HeelflipMenu extends Component {
     },
     buttons : {
       height: 80,
-      width: 150,
+      width: 250,
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',
       marginBottom: 15,
+      marginTop: 15,
       backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
       borderRadius: 10,
       borderWidth: 1,
