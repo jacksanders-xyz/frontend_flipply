@@ -156,9 +156,9 @@ export default class _3Shuv_bs_Menu extends Component {
       top : 0,
     },
     buttonBox: {
-      height : '5%',
+      height : '8.5%',
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });

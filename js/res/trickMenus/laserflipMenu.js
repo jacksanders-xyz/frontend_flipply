@@ -27,7 +27,7 @@ export default class LaserflipMenu extends Component {
   _displayLASERFLIP_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-         <View style={{height: 600}}>
+         <View style={{height: 550}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -145,9 +145,9 @@ export default class LaserflipMenu extends Component {
       top : 0,
     },
     buttonBox: {
-      height : '5%',
+      height : 108,
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });

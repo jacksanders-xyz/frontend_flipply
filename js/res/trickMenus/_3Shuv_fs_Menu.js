@@ -27,7 +27,7 @@ export default class _3Shuv_fs_Menu extends Component {
   _display3SHUV_FS_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 400}}>
+          <View style={{height: 500}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -119,7 +119,6 @@ export default class _3Shuv_fs_Menu extends Component {
       paddingTop: 20,
       paddingBottom: 20,
       alignSelf: 'center',
-      marginBottom: 15,
       backgroundColor: 'hsla(205, 83%, 16%, 0.67)',
       borderRadius: 10,
       borderWidth: 1,
@@ -142,9 +141,9 @@ export default class _3Shuv_fs_Menu extends Component {
       top : 0,
     },
     buttonBox: {
-      height : '5%',
+      height : 108,
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });
