@@ -27,7 +27,7 @@ export default class VarialflipMenu extends Component {
   _displayVARIALFLIP_MENU() {
     return (
         <ScrollView style={localStyles.scrollFlex} contentContainerStyle={{ flexGrow: 1 }} >
-          <View style={{height: 1500}}>
+          <View style={{height: 1550}}>
                 <TouchableOpacity 
                 style={localStyles.buttonBox}
                 activeOpacity={.5} 
@@ -159,9 +159,9 @@ export default class VarialflipMenu extends Component {
       top : 0,
     },
     buttonBox: {
-      height : '5%',
+      height : 109,
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });

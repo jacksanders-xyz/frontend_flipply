@@ -167,7 +167,7 @@
     buttonBox: {
       height : '5%',
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });

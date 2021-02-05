@@ -169,9 +169,9 @@ export default class PopShuv_fs_Menu extends Component {
       top : 0,
     },
     buttonBox: {
-      height : '5%',
+      height : 51, 
       width : '40%',
-      marginTop: 35,
+      marginTop: 30,
       marginBottom: 10,
     },
   });
