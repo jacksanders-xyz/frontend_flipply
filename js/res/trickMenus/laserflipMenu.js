@@ -41,30 +41,14 @@ export default class LaserflipMenu extends Component {
 
               <View style={localStyles.textFlex}>
                 <Text style={localStyles.titleText}>
-                Laserflips, write some shit about laserflips  now
+                Laserflips,
                 </Text>
 
                 <Text style={localStyles.descriptiveText}>
-                Perhaps one of the most famous and well recognozed tricks, the kickflip is a milestone for every skater. You measure your skating as
-                "pre-kickflip" and "post-kickflip". Perhaps it is the reason you got into skating in the first place, it is for many.{"\n\n"}
                 What is it? {"\n\n"}
-                The kick flip is an Ollie, plus a 360 degree rotatation about the lengthwise axis of the board.{"\n\n"}
-                FOOT POSITION:{"\n\n"}
-                Back foot is the same as the Ollie, in the curve of the tail and ready to pop in such a way that the foot snaps down{"\n\n"}
-                Front foot is up higher, the top of your foot should be touching the bottom right bolt (if you're goofy, bottom left if regular).
-                It should be angled and cocked towards the front lip ever so slightly.{"\n\n"}
-                1. Pop. {"\n\n"}
-                The back foot is the same as the ollie, it snaps straight down.{"\n\n"}
-                2. Flick{"\n\n"}
-                As the front foot slides up, instead of leveling out like in the Ollie, your goal is to instead flick out at a sharp angle
-                directly after your pop and right before the apex of your upward movement. The back foot will also come up after its snap to meet you 
-                in leveling out (as in the Ollie). Your movement and direction should be basically the same but baking this flick into your nerves system
-                is the hard part. In the begining it will fell Unnaturall and even weird....{"\n\n"}
-                3.Landing {"\n\n"}
-                You have to commit and trust that the board will be there when you go to land! This confidence will only grow with time but in the meantime 
-                get ready to land 'primo' once or twice before you get the hang of it.{"\n\n"}
-                Click below to see the kickflip in augmented reality!
-
+                A frontside 360 heelflip
+                {"\n\n"}
+                Yeah I definitely can't do this, so no advice.... but I commend you for shredding this hard. Here it is in AR:
                 </Text>
 
               </View>

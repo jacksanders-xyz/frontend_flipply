@@ -69,7 +69,7 @@ export default class _3Shuv_bs_Menu extends Component {
               onPress={() => this.props._begin_TrickScene("_3SHUV_BS_SCENE")}
               underlayColor={'#68a0ff'} >
               <Text style={localStyles.buttonText}>
-              kickflip
+              backside 3Shuv
               </Text>
               </TouchableHighlight>
           </View>
